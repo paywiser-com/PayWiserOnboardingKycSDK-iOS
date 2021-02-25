@@ -1,0 +1,11 @@
+framework module PayWiserOnboardingKYC {
+  umbrella header "PayWiserOnboardingKYC.h"
+
+  export *
+  module * { export * }
+}
+
+module PayWiserOnboardingKYC.Swift {
+    header "PayWiserOnboardingKYC-Swift.h"
+    requires objc
+}
