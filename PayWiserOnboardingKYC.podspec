@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'PayWiserOnboardingKYC'
-  s.version          = '3.0.31'
+  s.version          = '3.0.32'
   s.summary          = 'KYC user identification and verification.'
 
   s.description      = 'PayWiser Onboarding KYC SDK for iOS is a service that allows third-party apps to easily include user identification and verification into their iOS apps. This service identifies the user using their official ID documents through a video in real-time.'
@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://www.paywiser.com'
   s.license          = { :type => 'Copyright', :text => 'Copyright 2020 Intech d.o.o. All rights reserved.\n' }
   s.author           = { 'tjasajan' => 'tjasa@intech.si' }
-  s.source           = { :http => 'https://github.com/paywiser-com/PayWiserOnboardingKYC-iOS/archive/v3.0.31.tar.gz' }
+  s.source           = { :http => 'https://github.com/paywiser-com/PayWiserOnboardingKycSDK-iOS/archive/v3.0.32.tar.gz' }
 
   s.swift_versions = ['5']
   
