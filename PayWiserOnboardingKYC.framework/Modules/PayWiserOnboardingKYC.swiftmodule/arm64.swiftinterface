@@ -1242,11 +1242,6 @@ public class AuthenticationInterceptor<AuthenticatorType> : PayWiserOnboardingKY
   public func retry(_ request: PayWiserOnboardingKYC.Request, for session: PayWiserOnboardingKYC.Session, dueTo error: Swift.Error, completion: @escaping (PayWiserOnboardingKYC.RetryResult) -> Swift.Void)
   @objc deinit
 }
-extension PhoneNumberTextField {
-  @objc override dynamic open func textRect(forBounds bounds: CoreGraphics.CGRect) -> CoreGraphics.CGRect
-  @objc override dynamic open func placeholderRect(forBounds bounds: CoreGraphics.CGRect) -> CoreGraphics.CGRect
-  @objc override dynamic open func editingRect(forBounds bounds: CoreGraphics.CGRect) -> CoreGraphics.CGRect
-}
 public enum SwiftyJSONError : Swift.Int, Swift.Error {
   case unsupportedType
   case indexOutOfBounds
