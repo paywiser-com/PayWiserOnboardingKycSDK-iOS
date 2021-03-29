@@ -2,16 +2,45 @@
 // swift-compiler-version: Apple Swift version 5.3.1 (swiftlang-1200.0.41 clang-1200.0.32.8)
 // swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name PayWiserOnboardingKYC
 import Combine
-import CountryPickerView
+import CoreTelephony
 import Dispatch
 import Foundation
 import MobileCoreServices
 @_exported import PayWiserOnboardingKYC
-import PhoneNumberKit
 import Swift
 import SystemConfiguration
 import UIKit
 import VideoID
+public struct PhoneNumber : Swift.Codable {
+  public let numberString: Swift.String
+  public let countryCode: Swift.UInt64
+  public let leadingZero: Swift.Bool
+  public let nationalNumber: Swift.UInt64
+  public let numberExtension: Swift.String?
+  public let type: PayWiserOnboardingKYC.PhoneNumberType
+  public let regionID: Swift.String?
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension PhoneNumber : Swift.Equatable {
+  public static func == (lhs: PayWiserOnboardingKYC.PhoneNumber, rhs: PayWiserOnboardingKYC.PhoneNumber) -> Swift.Bool
+}
+extension PhoneNumber : Swift.Hashable {
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension PhoneNumber {
+  public static func notPhoneNumber() -> PayWiserOnboardingKYC.PhoneNumber
+  public func notParsed() -> Swift.Bool
+}
+extension PhoneNumber {
+  @available(*, unavailable, message: "use PhoneNumberKit instead to produce PhoneNumbers")
+  public init(rawNumber: Swift.String) throws
+  @available(*, unavailable, message: "use PhoneNumberKit instead to produce PhoneNumbers")
+  public init(rawNumber: Swift.String, region: Swift.String) throws
+}
 public typealias Parameters = [Swift.String : Any]
 public protocol ParameterEncoding {
   func encode(_ urlRequest: PayWiserOnboardingKYC.URLRequestConvertible, with parameters: PayWiserOnboardingKYC.Parameters?) throws -> Foundation.URLRequest
@@ -323,6 +352,83 @@ extension DataStreamRequest {
   @discardableResult
   final public func responseStreamDecodable<T>(of type: T.Type = T.self, on queue: Dispatch.DispatchQueue = .main, using decoder: PayWiserOnboardingKYC.DataDecoder = JSONDecoder(), preprocessor: PayWiserOnboardingKYC.DataPreprocessor = PassthroughPreprocessor(), stream: @escaping PayWiserOnboardingKYC.DataStreamRequest.Handler<T, PayWiserOnboardingKYC.AFError>) -> Self where T : Swift.Decodable
 }
+public typealias CPVCountry = PayWiserOnboardingKYC.Country
+public enum SearchBarPosition {
+  case tableViewHeader
+  case navigationBar
+  case hidden
+  public static func == (a: PayWiserOnboardingKYC.SearchBarPosition, b: PayWiserOnboardingKYC.SearchBarPosition) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public struct Country : Swift.Equatable {
+  public let name: Swift.String
+  public let code: Swift.String
+  public let phoneCode: Swift.String
+  public func localizedName(_ locale: Foundation.Locale = Locale.current) -> Swift.String?
+  public var flag: UIKit.UIImage {
+    get
+  }
+}
+public func == (lhs: PayWiserOnboardingKYC.Country, rhs: PayWiserOnboardingKYC.Country) -> Swift.Bool
+public func != (lhs: PayWiserOnboardingKYC.Country, rhs: PayWiserOnboardingKYC.Country) -> Swift.Bool
+@objc @_inheritsConvenienceInitializers public class CountryPickerView : PayWiserOnboardingKYC.NibView {
+  @objc @IBOutlet weak public var flagImageView: UIKit.UIImageView! {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBOutlet weak public var countryDetailsLabel: UIKit.UILabel!
+  public var showCountryCodeInView: Swift.Bool {
+    get
+    set(value)
+  }
+  public var showPhoneCodeInView: Swift.Bool {
+    get
+    set(value)
+  }
+  public var showCountryNameInView: Swift.Bool {
+    get
+    set(value)
+  }
+  public var font: UIKit.UIFont {
+    get
+    set(value)
+  }
+  public var textColor: UIKit.UIColor {
+    get
+    set(value)
+  }
+  public var flagSpacingInView: CoreGraphics.CGFloat {
+    get
+    set(newValue)
+  }
+  weak public var dataSource: PayWiserOnboardingKYC.CountryPickerViewDataSource?
+  weak public var delegate: PayWiserOnboardingKYC.CountryPickerViewDelegate?
+  weak public var hostViewController: UIKit.UIViewController?
+  public var selectedCountry: PayWiserOnboardingKYC.Country {
+    get
+  }
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  public func showCountriesList(from viewController: UIKit.UIViewController)
+  final public let countries: [PayWiserOnboardingKYC.Country]
+  @objc deinit
+}
+extension CountryPickerView {
+  public func setCountryByName(_ name: Swift.String)
+  public func setCountryByPhoneCode(_ phoneCode: Swift.String)
+  public func setCountryByCode(_ code: Swift.String)
+  public func getCountryByName(_ name: Swift.String) -> PayWiserOnboardingKYC.Country?
+  public func getCountryByPhoneCode(_ phoneCode: Swift.String) -> PayWiserOnboardingKYC.Country?
+  public func getCountryByCode(_ code: Swift.String) -> PayWiserOnboardingKYC.Country?
+}
+@objc @_inheritsConvenienceInitializers public class NibView : UIKit.UIView {
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
 open class MultipartFormData {
   public static var encodingMemoryThreshold: Swift.UInt64
   open var contentType: Swift.String {
@@ -469,6 +575,37 @@ final public class KycUserData {
   public init(firstName: Swift.String?, middleName: Swift.String?, lastName: Swift.String?, address1: Swift.String?, address2: Swift.String?, address3: Swift.String?, zipCode: Swift.String?, city: Swift.String?, state: Swift.String?, countryCode: Swift.String?, email: Swift.String?, mobileNumber: Swift.String?)
   @objc deinit
 }
+@objc @_inheritsConvenienceInitializers public class CountryPickerViewController : UIKit.UITableViewController {
+  public var searchController: UIKit.UISearchController?
+  @objc override dynamic public func viewDidLoad()
+  @objc override dynamic public init(style: UIKit.UITableView.Style)
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension CountryPickerViewController {
+  @objc override dynamic public func numberOfSections(in tableView: UIKit.UITableView) -> Swift.Int
+  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, titleForHeaderInSection section: Swift.Int) -> Swift.String?
+  @objc override dynamic public func sectionIndexTitles(for tableView: UIKit.UITableView) -> [Swift.String]?
+  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, sectionForSectionIndexTitle title: Swift.String, at index: Swift.Int) -> Swift.Int
+}
+extension CountryPickerViewController {
+  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, willDisplayHeaderView view: UIKit.UIView, forSection section: Swift.Int)
+  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
+}
+extension CountryPickerViewController : UIKit.UISearchResultsUpdating {
+  @objc dynamic public func updateSearchResults(for searchController: UIKit.UISearchController)
+}
+extension CountryPickerViewController : UIKit.UISearchBarDelegate {
+  @objc dynamic public func searchBarTextDidBeginEditing(_ searchBar: UIKit.UISearchBar)
+  @objc dynamic public func searchBarCancelButtonClicked(_ searchBar: UIKit.UISearchBar)
+}
+extension CountryPickerViewController : UIKit.UISearchControllerDelegate {
+  @objc dynamic public func willPresentSearchController(_ searchController: UIKit.UISearchController)
+  @objc dynamic public func willDismissSearchController(_ searchController: UIKit.UISearchController)
+}
 extension UIColor {
   public convenience init?(hex: Swift.String)
 }
@@ -500,6 +637,50 @@ public struct ResponseCacher {
 extension ResponseCacher : PayWiserOnboardingKYC.CachedResponseHandler {
   public func dataTask(_ task: Foundation.URLSessionDataTask, willCacheResponse response: Foundation.CachedURLResponse, completion: @escaping (Foundation.CachedURLResponse?) -> Swift.Void)
 }
+public struct MetadataTerritory : Swift.Decodable {
+  public let codeID: Swift.String
+  public let countryCode: Swift.UInt64
+  public let internationalPrefix: Swift.String?
+  public let mainCountryForCode: Swift.Bool
+  public let nationalPrefix: Swift.String?
+  public let nationalPrefixFormattingRule: Swift.String?
+  public let nationalPrefixForParsing: Swift.String?
+  public let nationalPrefixTransformRule: Swift.String?
+  public let preferredExtnPrefix: Swift.String?
+  public let emergency: PayWiserOnboardingKYC.MetadataPhoneNumberDesc?
+  public let fixedLine: PayWiserOnboardingKYC.MetadataPhoneNumberDesc?
+  public let generalDesc: PayWiserOnboardingKYC.MetadataPhoneNumberDesc?
+  public let mobile: PayWiserOnboardingKYC.MetadataPhoneNumberDesc?
+  public let pager: PayWiserOnboardingKYC.MetadataPhoneNumberDesc?
+  public let personalNumber: PayWiserOnboardingKYC.MetadataPhoneNumberDesc?
+  public let premiumRate: PayWiserOnboardingKYC.MetadataPhoneNumberDesc?
+  public let sharedCost: PayWiserOnboardingKYC.MetadataPhoneNumberDesc?
+  public let tollFree: PayWiserOnboardingKYC.MetadataPhoneNumberDesc?
+  public let voicemail: PayWiserOnboardingKYC.MetadataPhoneNumberDesc?
+  public let voip: PayWiserOnboardingKYC.MetadataPhoneNumberDesc?
+  public let uan: PayWiserOnboardingKYC.MetadataPhoneNumberDesc?
+  public let numberFormats: [PayWiserOnboardingKYC.MetadataPhoneNumberFormat]
+  public let leadingDigits: Swift.String?
+}
+public struct MetadataPhoneNumberDesc : Swift.Decodable {
+  public let exampleNumber: Swift.String?
+  public let nationalNumberPattern: Swift.String?
+  public let possibleNumberPattern: Swift.String?
+  public let possibleLengths: PayWiserOnboardingKYC.MetadataPossibleLengths?
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct MetadataPossibleLengths : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct MetadataPhoneNumberFormat : Swift.Decodable {
+  public let pattern: Swift.String?
+  public let format: Swift.String?
+  public let intlFormat: Swift.String?
+  public let leadingDigitsPatterns: [Swift.String]?
+  public var nationalPrefixFormattingRule: Swift.String?
+  public let nationalPrefixOptionalWhenFormatting: Swift.Bool?
+  public let domesticCarrierCodeFormattingRule: Swift.String?
+}
 open class RetryPolicy : PayWiserOnboardingKYC.RequestInterceptor {
   public static var defaultRetryLimit: Swift.UInt
   public static var defaultExponentialBackoffBase: Swift.UInt
@@ -522,6 +703,30 @@ open class ConnectionLostRetryPolicy : PayWiserOnboardingKYC.RetryPolicy {
   public init(retryLimit: Swift.UInt = RetryPolicy.defaultRetryLimit, exponentialBackoffBase: Swift.UInt = RetryPolicy.defaultExponentialBackoffBase, exponentialBackoffScale: Swift.Double = RetryPolicy.defaultExponentialBackoffScale, retryableHTTPMethods: Swift.Set<PayWiserOnboardingKYC.HTTPMethod> = RetryPolicy.defaultRetryableHTTPMethods)
   @objc deinit
   override public init(retryLimit: Swift.UInt = super, exponentialBackoffBase: Swift.UInt = super, exponentialBackoffScale: Swift.Double = super, retryableHTTPMethods: Swift.Set<PayWiserOnboardingKYC.HTTPMethod> = super, retryableHTTPStatusCodes: Swift.Set<Swift.Int> = super, retryableURLErrorCodes: Swift.Set<Foundation.URLError.Code> = super)
+}
+@objc open class PhoneNumberFormatter : Foundation.Formatter {
+  final public let phoneNumberKit: PayWiserOnboardingKYC.PhoneNumberKit
+  @objc dynamic public var generatesPhoneNumber: Swift.Bool
+  @objc dynamic public var defaultRegion: Swift.String {
+    @objc get
+    @objc set(value)
+  }
+  @objc dynamic public var withPrefix: Swift.Bool {
+    @objc get
+    @objc set(value)
+  }
+  @objc dynamic public var currentRegion: Swift.String {
+    @objc get
+  }
+  public init(phoneNumberKit pnk: PayWiserOnboardingKYC.PhoneNumberKit = PhoneNumberKit(), defaultRegion: Swift.String = PhoneNumberKit.defaultRegionCode(), withPrefix: Swift.Bool = true)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+  @objc override dynamic public init()
+}
+extension PhoneNumberFormatter {
+  @objc override dynamic open func string(for obj: Any?) -> Swift.String?
+  @objc override dynamic open func getObjectValue(_ obj: Swift.AutoreleasingUnsafeMutablePointer<Swift.AnyObject?>?, for string: Swift.String, errorDescription error: Swift.AutoreleasingUnsafeMutablePointer<Foundation.NSString?>?) -> Swift.Bool
+  @objc override dynamic open func isPartialStringValid(_ partialStringPtr: Swift.AutoreleasingUnsafeMutablePointer<Foundation.NSString>, proposedSelectedRange proposedSelRangePtr: Foundation.NSRangePointer?, originalString origString: Swift.String, originalSelectedRange origSelRange: Foundation.NSRange, errorDescription error: Swift.AutoreleasingUnsafeMutablePointer<Foundation.NSString?>?) -> Swift.Bool
 }
 @_hasMissingDesignatedInitializers open class NetworkReachabilityManager {
   public enum NetworkReachabilityStatus {
@@ -565,6 +770,73 @@ open class ConnectionLostRetryPolicy : PayWiserOnboardingKYC.RetryPolicy {
 }
 extension NetworkReachabilityManager.NetworkReachabilityStatus : Swift.Equatable {
   public static func == (a: PayWiserOnboardingKYC.NetworkReachabilityManager.NetworkReachabilityStatus, b: PayWiserOnboardingKYC.NetworkReachabilityManager.NetworkReachabilityStatus) -> Swift.Bool
+}
+extension MetadataTerritory {
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case codeID
+    case countryCode
+    case internationalPrefix
+    case mainCountryForCode
+    case nationalPrefix
+    case nationalPrefixFormattingRule
+    case nationalPrefixForParsing
+    case nationalPrefixTransformRule
+    case preferredExtnPrefix
+    case emergency
+    case fixedLine
+    case generalDesc
+    case mobile
+    case pager
+    case personalNumber
+    case premiumRate
+    case sharedCost
+    case tollFree
+    case voicemail
+    case voip
+    case uan
+    case numberFormats
+    case leadingDigits
+    case availableFormats
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+  }
+  public init(from decoder: Swift.Decoder) throws
+}
+extension MetadataPhoneNumberFormat {
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case pattern
+    case format
+    case intlFormat
+    case leadingDigitsPatterns
+    case nationalPrefixFormattingRule
+    case nationalPrefixOptionalWhenFormatting
+    case domesticCarrierCodeFormattingRule
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+    public init?(stringValue: Swift.String)
+    public var intValue: Swift.Int? {
+      get
+    }
+    public init?(intValue: Swift.Int)
+  }
+  public init(from decoder: Swift.Decoder) throws
 }
 public struct AlamofireExtension<ExtendedType> {
   public var type: ExtendedType {
@@ -729,6 +1001,65 @@ extension SecTrustResultType : PayWiserOnboardingKYC.AlamofireExtended {
 }
 extension AlamofireExtension where ExtendedType == Security.SecTrustResultType {
   public var isSuccess: Swift.Bool {
+    get
+  }
+}
+public enum PhoneNumberError : Swift.Error {
+  case generalError
+  case invalidCountryCode
+  case notANumber
+  case unknownType
+  case tooLong
+  case tooShort
+  case deprecated
+  case metadataNotFound
+  public static func == (a: PayWiserOnboardingKYC.PhoneNumberError, b: PayWiserOnboardingKYC.PhoneNumberError) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+extension PhoneNumberError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+public enum PhoneNumberFormat {
+  case e164
+  case international
+  case national
+  public static func == (a: PayWiserOnboardingKYC.PhoneNumberFormat, b: PayWiserOnboardingKYC.PhoneNumberFormat) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum PhoneNumberType : Swift.String, Swift.Codable {
+  case fixedLine
+  case mobile
+  case fixedOrMobile
+  case pager
+  case personalNumber
+  case premiumRate
+  case sharedCost
+  case tollFree
+  case voicemail
+  case voip
+  case uan
+  case unknown
+  case notParsed
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum PossibleLengthType : Swift.String, Swift.Codable {
+  case national
+  case localOnly
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
     get
   }
 }
@@ -1591,6 +1922,20 @@ extension JSON : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
+@_hasMissingDesignatedInitializers final public class PartialFormatter {
+  public convenience init(phoneNumberKit: PayWiserOnboardingKYC.PhoneNumberKit = PhoneNumberKit(), defaultRegion: Swift.String = PhoneNumberKit.defaultRegionCode(), withPrefix: Swift.Bool = true, maxDigits: Swift.Int? = nil)
+  final public var defaultRegion: Swift.String {
+    get
+    set(value)
+  }
+  final public var maxDigits: Swift.Int?
+  final public var currentRegion: Swift.String {
+    get
+  }
+  final public func nationalNumber(from rawNumber: Swift.String) -> Swift.String
+  final public func formatPartial(_ rawNumber: Swift.String) -> Swift.String
+  @objc deinit
+}
 public typealias AFDataResponse<Success> = PayWiserOnboardingKYC.DataResponse<Success, PayWiserOnboardingKYC.AFError>
 public typealias AFDownloadResponse<Success> = PayWiserOnboardingKYC.DownloadResponse<Success, PayWiserOnboardingKYC.AFError>
 public struct DataResponse<Success, Failure> where Failure : Swift.Error {
@@ -1653,6 +1998,56 @@ extension DownloadResponse {
   public func tryMapError<NewFailure>(_ transform: (Failure) throws -> NewFailure) -> PayWiserOnboardingKYC.DownloadResponse<Success, Swift.Error> where NewFailure : Swift.Error
 }
 public var AF: PayWiserOnboardingKYC.Session
+extension PhoneNumber {
+  public func adjustedNationalNumber() -> Swift.String
+}
+public protocol CountryPickerViewDelegate : AnyObject {
+  func countryPickerView(_ countryPickerView: PayWiserOnboardingKYC.CountryPickerView, didSelectCountry country: PayWiserOnboardingKYC.Country)
+  func countryPickerView(_ countryPickerView: PayWiserOnboardingKYC.CountryPickerView, willShow viewController: PayWiserOnboardingKYC.CountryPickerViewController)
+  func countryPickerView(_ countryPickerView: PayWiserOnboardingKYC.CountryPickerView, didShow viewController: PayWiserOnboardingKYC.CountryPickerViewController)
+}
+public protocol CountryPickerViewDataSource : AnyObject {
+  func preferredCountries(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> [PayWiserOnboardingKYC.Country]
+  func sectionTitleForPreferredCountries(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> Swift.String?
+  func showOnlyPreferredSection(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> Swift.Bool
+  func sectionTitleLabelFont(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> UIKit.UIFont
+  func sectionTitleLabelColor(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> UIKit.UIColor?
+  func cellLabelFont(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> UIKit.UIFont
+  func cellLabelColor(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> UIKit.UIColor?
+  func cellImageViewSize(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> CoreGraphics.CGSize
+  func cellImageViewCornerRadius(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> CoreGraphics.CGFloat
+  func navigationTitle(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> Swift.String?
+  func closeButtonNavigationItem(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> UIKit.UIBarButtonItem?
+  func searchBarPosition(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> PayWiserOnboardingKYC.SearchBarPosition
+  func showPhoneCodeInList(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> Swift.Bool
+  func showCountryCodeInList(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> Swift.Bool
+  func showCheckmarkInList(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> Swift.Bool
+  func localeForCountryNameInList(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> Foundation.Locale
+  func excludedCountries(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> [PayWiserOnboardingKYC.Country]
+}
+extension CountryPickerViewDataSource {
+  public func preferredCountries(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> [PayWiserOnboardingKYC.Country]
+  public func sectionTitleForPreferredCountries(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> Swift.String?
+  public func showOnlyPreferredSection(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> Swift.Bool
+  public func sectionTitleLabelFont(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> UIKit.UIFont
+  public func sectionTitleLabelColor(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> UIKit.UIColor?
+  public func cellLabelFont(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> UIKit.UIFont
+  public func cellLabelColor(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> UIKit.UIColor?
+  public func cellImageViewCornerRadius(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> CoreGraphics.CGFloat
+  public func cellImageViewSize(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> CoreGraphics.CGSize
+  public func navigationTitle(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> Swift.String?
+  public func closeButtonNavigationItem(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> UIKit.UIBarButtonItem?
+  public func searchBarPosition(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> PayWiserOnboardingKYC.SearchBarPosition
+  public func showPhoneCodeInList(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> Swift.Bool
+  public func showCountryCodeInList(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> Swift.Bool
+  public func showCheckmarkInList(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> Swift.Bool
+  public func localeForCountryNameInList(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> Foundation.Locale
+  public func excludedCountries(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> [PayWiserOnboardingKYC.Country]
+}
+extension CountryPickerViewDelegate {
+  public func countryPickerView(_ countryPickerView: PayWiserOnboardingKYC.CountryPickerView, willShow viewController: PayWiserOnboardingKYC.CountryPickerViewController)
+  public func countryPickerView(_ countryPickerView: PayWiserOnboardingKYC.CountryPickerView, didShow viewController: PayWiserOnboardingKYC.CountryPickerViewController)
+}
 public protocol EventMonitor {
   var queue: Dispatch.DispatchQueue { get }
   func urlSession(_ session: Foundation.URLSession, didBecomeInvalidWithError error: Swift.Error?)
@@ -2060,6 +2455,35 @@ extension AFError : Foundation.LocalizedError {
     get
   }
 }
+public typealias MetadataCallback = (() throws -> Foundation.Data?)
+@objc final public class PhoneNumberKit : ObjectiveC.NSObject {
+  public init(metadataCallback: @escaping PayWiserOnboardingKYC.MetadataCallback = PhoneNumberKit.defaultMetadataCallback)
+  final public func parse(_ numberString: Swift.String, withRegion region: Swift.String = PhoneNumberKit.defaultRegionCode(), ignoreType: Swift.Bool = false) throws -> PayWiserOnboardingKYC.PhoneNumber
+  final public func parse(_ numberStrings: [Swift.String], withRegion region: Swift.String = PhoneNumberKit.defaultRegionCode(), ignoreType: Swift.Bool = false, shouldReturnFailedEmptyNumbers: Swift.Bool = false) -> [PayWiserOnboardingKYC.PhoneNumber]
+  final public func isValidPhoneNumber(_ numberString: Swift.String, withRegion region: Swift.String = PhoneNumberKit.defaultRegionCode(), ignoreType: Swift.Bool = false) -> Swift.Bool
+  final public func format(_ phoneNumber: PayWiserOnboardingKYC.PhoneNumber, toType formatType: PayWiserOnboardingKYC.PhoneNumberFormat, withPrefix prefix: Swift.Bool = true) -> Swift.String
+  final public func allCountries() -> [Swift.String]
+  final public func countries(withCode countryCode: Swift.UInt64) -> [Swift.String]?
+  final public func mainCountry(forCode countryCode: Swift.UInt64) -> Swift.String?
+  final public func countryCode(for country: Swift.String) -> Swift.UInt64?
+  final public func leadingDigits(for country: Swift.String) -> Swift.String?
+  final public func getRegionCode(of phoneNumber: PayWiserOnboardingKYC.PhoneNumber) -> Swift.String?
+  final public func getExampleNumber(forCountry countryCode: Swift.String, ofType type: PayWiserOnboardingKYC.PhoneNumberType = .mobile) -> PayWiserOnboardingKYC.PhoneNumber?
+  final public func getFormattedExampleNumber(forCountry countryCode: Swift.String, ofType type: PayWiserOnboardingKYC.PhoneNumberType = .mobile, withFormat format: PayWiserOnboardingKYC.PhoneNumberFormat = .international, withPrefix prefix: Swift.Bool = true) -> Swift.String?
+  final public func metadata(for country: Swift.String) -> PayWiserOnboardingKYC.MetadataTerritory?
+  final public func metadata(forCode countryCode: Swift.UInt64) -> [PayWiserOnboardingKYC.MetadataTerritory]?
+  final public func possiblePhoneNumberLengths(forCountry country: Swift.String, phoneNumberType: PayWiserOnboardingKYC.PhoneNumberType, lengthType: PayWiserOnboardingKYC.PossibleLengthType) -> [Swift.Int]
+  final public class func defaultRegionCode() -> Swift.String
+  public static func defaultMetadataCallback() throws -> Foundation.Data?
+  @objc deinit
+  @objc override dynamic public init()
+}
+extension PhoneNumberKit {
+  public enum CountryCodePicker {
+    public static var commonCountryCodes: [Swift.String]
+    public static var forceModalPresentation: Swift.Bool
+  }
+}
 public protocol URLConvertible {
   func asURL() throws -> Foundation.URL
 }
@@ -2142,6 +2566,93 @@ extension Notification {
   final public func request(_ request: PayWiserOnboardingKYC.Request, didCompleteTask task: Foundation.URLSessionTask, with error: PayWiserOnboardingKYC.AFError?)
   @objc deinit
 }
+@objc @_inheritsConvenienceInitializers open class PhoneNumberTextField : UIKit.UITextField, UIKit.UITextFieldDelegate {
+  final public let phoneNumberKit: PayWiserOnboardingKYC.PhoneNumberKit
+  public var flagButton: UIKit.UIButton {
+    get
+    set(value)
+  }
+  @objc override dynamic open var text: Swift.String? {
+    @objc get
+    @objc set(newValue)
+  }
+  open func setTextUnformatted(newValue: Swift.String?)
+  open var defaultRegion: Swift.String {
+    get
+    @available(*, deprecated, message: "    The setter of defaultRegion is deprecated,\n    please override defaultRegion in a subclass instead.")
+    set(newValue)
+  }
+  public var withPrefix: Swift.Bool {
+    get
+    set(value)
+  }
+  public var withFlag: Swift.Bool {
+    get
+    set(value)
+  }
+  public var withExamplePlaceholder: Swift.Bool {
+    get
+    set(value)
+  }
+  public var countryCodePlaceholderColor: UIKit.UIColor {
+    get
+    set(value)
+  }
+  public var numberPlaceholderColor: UIKit.UIColor {
+    get
+    set(value)
+  }
+  @available(iOS 11.0, *)
+  public var withDefaultPickerUI: Swift.Bool {
+    get
+    set(newValue)
+  }
+  public var isPartialFormatterEnabled: Swift.Bool
+  public var maxDigits: Swift.Int? {
+    get
+    set(value)
+  }
+  public var partialFormatter: PayWiserOnboardingKYC.PartialFormatter {
+    get
+  }
+  @objc override dynamic open var delegate: UIKit.UITextFieldDelegate? {
+    @objc get
+    @objc set(newValue)
+  }
+  public var currentRegion: Swift.String {
+    get
+  }
+  public var nationalNumber: Swift.String {
+    get
+  }
+  public var isValidNumber: Swift.Bool {
+    get
+  }
+  public var phoneNumber: PayWiserOnboardingKYC.PhoneNumber? {
+    get
+  }
+  @objc override dynamic open func layoutSubviews()
+  public convenience init(withPhoneNumberKit phoneNumberKit: PayWiserOnboardingKYC.PhoneNumberKit)
+  public init(frame: CoreGraphics.CGRect, phoneNumberKit: PayWiserOnboardingKYC.PhoneNumberKit)
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init(coder aDecoder: Foundation.NSCoder)
+  open func updateFlag()
+  open func updatePlaceholder()
+  @objc open func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+  @objc open func textFieldShouldBeginEditing(_ textField: UIKit.UITextField) -> Swift.Bool
+  @objc open func textFieldDidBeginEditing(_ textField: UIKit.UITextField)
+  @objc open func textFieldShouldEndEditing(_ textField: UIKit.UITextField) -> Swift.Bool
+  @objc open func textFieldDidEndEditing(_ textField: UIKit.UITextField)
+  @available(iOS 10.0, tvOS 10.0, *)
+  @objc open func textFieldDidEndEditing(_ textField: UIKit.UITextField, reason: UIKit.UITextField.DidEndEditingReason)
+  @objc open func textFieldShouldClear(_ textField: UIKit.UITextField) -> Swift.Bool
+  @objc open func textFieldShouldReturn(_ textField: UIKit.UITextField) -> Swift.Bool
+  @objc deinit
+}
+@available(iOS 11.0, *)
+extension PhoneNumberTextField : PayWiserOnboardingKYC.CountryCodePickerDelegate {
+  public func countryCodePickerViewControllerDidPickCountry(_ country: PayWiserOnboardingKYC.CountryCodePickerViewController.Country)
+}
 @objc open class SessionDelegate : ObjectiveC.NSObject {
   public init(fileManager: Foundation.FileManager = .default)
   @objc deinit
@@ -2219,6 +2730,44 @@ extension Session : PayWiserOnboardingKYC.RequestDelegate {
   public func cleanup(after request: PayWiserOnboardingKYC.Request)
   public func retryResult(for request: PayWiserOnboardingKYC.Request, dueTo error: PayWiserOnboardingKYC.AFError, completion: @escaping (PayWiserOnboardingKYC.RetryResult) -> Swift.Void)
   public func retryRequest(_ request: PayWiserOnboardingKYC.Request, withDelay timeDelay: Foundation.TimeInterval?)
+}
+@available(iOS 11.0, *)
+public protocol CountryCodePickerDelegate : AnyObject {
+  func countryCodePickerViewControllerDidPickCountry(_ country: PayWiserOnboardingKYC.CountryCodePickerViewController.Country)
+}
+@objc @_hasMissingDesignatedInitializers @available(iOS 11.0, *)
+public class CountryCodePickerViewController : UIKit.UITableViewController {
+  final public let phoneNumberKit: PayWiserOnboardingKYC.PhoneNumberKit
+  weak public var delegate: PayWiserOnboardingKYC.CountryCodePickerDelegate?
+  public init(phoneNumberKit: PayWiserOnboardingKYC.PhoneNumberKit, commonCountryCodes: [Swift.String] = PhoneNumberKit.CountryCodePicker.commonCountryCodes)
+  @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @objc override dynamic public func numberOfSections(in tableView: UIKit.UITableView) -> Swift.Int
+  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, titleForHeaderInSection section: Swift.Int) -> Swift.String?
+  @objc override dynamic public func sectionIndexTitles(for tableView: UIKit.UITableView) -> [Swift.String]?
+  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
+  @objc override dynamic public init(style: UIKit.UITableView.Style)
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc deinit
+}
+@available(iOS 11.0, *)
+extension CountryCodePickerViewController : UIKit.UISearchResultsUpdating {
+  @objc dynamic public func updateSearchResults(for searchController: UIKit.UISearchController)
+}
+@available(iOS 11.0, *)
+extension CountryCodePickerViewController {
+  public struct Country {
+    public var code: Swift.String
+    public var flag: Swift.String
+    public var name: Swift.String
+    public var prefix: Swift.String
+    public init?(for countryCode: Swift.String, with phoneNumberKit: PayWiserOnboardingKYC.PhoneNumberKit)
+  }
+  @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class Cell : UIKit.UITableViewCell {
+    @objc deinit
+  }
 }
 public struct Style {
   public struct Colors {

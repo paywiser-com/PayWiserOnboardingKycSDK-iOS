@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'PayWiserOnboardingKYC'
-  s.version          = '3.1.0'
+  s.version          = '3.1.01'
   s.summary          = 'KYC user identification and verification.'
 
   s.description      = 'PayWiser Onboarding KYC SDK for iOS is a service that allows third-party apps to easily include user identification and verification into their iOS apps. This service identifies the user using their official ID documents through a video in real-time.'
@@ -8,14 +8,14 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://www.paywiser.com'
   s.license          = { :type => 'Copyright', :text => 'Copyright 2020 Intech d.o.o. All rights reserved.\n' }
   s.author           = { 'tjasajan' => 'tjasa@intech.si' }
-  s.source           = { :http => 'https://github.com/paywiser-com/PayWiserOnboardingKycSDK-iOS/archive/v3.1.0.tar.gz' }
+  s.source           = { :http => 'https://github.com/paywiser-com/PayWiserOnboardingKycSDK-iOS/archive/v3.1.01.tar.gz' }
 
   s.swift_versions = ['5']
   
   s.ios.deployment_target = '12.0'
 
   s.resource_bundles = {
-     'PayWiserOnboardingKYC' => 'PayWiserOnboardingKYC.framework/*.{storyboardc,nib,lproj}'
+     'PayWiserOnboardingKYC' => 'PayWiserOnboardingKYC.framework/*.{storyboardc,nib,lproj,bundle,json,xml,sh}'
   }
 
   s.source_files = "PayWiserOnboardingKYC.framework/Headers/*.h"
@@ -25,8 +25,6 @@ Pod::Spec.new do |s|
 
   
   s.frameworks = 'UIKit'
-  s.dependency 'PhoneNumberKit', '3.3.1'
-  s.dependency 'CountryPickerView', '3.1.3'
   s.dependency 'VideoID', '7.1.9'
   
   s.pod_target_xcconfig = {

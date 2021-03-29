@@ -188,6 +188,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import CoreGraphics;
 @import Foundation;
 @import ObjectiveC;
 @import UIKit;
@@ -210,9 +211,170 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+@class NSCoder;
+@class UITableView;
+@class UITableViewCell;
+@class NSBundle;
+
+SWIFT_CLASS("_TtC21PayWiserOnboardingKYC31CountryCodePickerViewController") SWIFT_AVAILABILITY(ios,introduced=11.0)
+@interface CountryCodePickerViewController : UITableViewController
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
+- (void)viewWillAppear:(BOOL)animated;
+- (void)viewWillDisappear:(BOOL)animated;
+- (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)tableView:(UITableView * _Nonnull)tableView titleForHeaderInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (NSArray<NSString *> * _Nullable)sectionIndexTitlesForTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (nonnull instancetype)initWithStyle:(UITableViewStyle)style SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
+@end
+
+
+SWIFT_AVAILABILITY(ios,introduced=11.0)
+@interface CountryCodePickerViewController (SWIFT_EXTENSION(PayWiserOnboardingKYC))
+@end
+
+@class UISearchController;
+
+SWIFT_AVAILABILITY(ios,introduced=11.0)
+@interface CountryCodePickerViewController (SWIFT_EXTENSION(PayWiserOnboardingKYC)) <UISearchResultsUpdating>
+- (void)updateSearchResultsForSearchController:(UISearchController * _Nonnull)searchController;
+@end
+
+
+SWIFT_CLASS("_TtC21PayWiserOnboardingKYC7NibView")
+@interface NibView : UIView
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UIImageView;
+@class UILabel;
+
+SWIFT_CLASS("_TtC21PayWiserOnboardingKYC17CountryPickerView")
+@interface CountryPickerView : NibView
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified flagImageView;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified countryDetailsLabel;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
 
 
 
+SWIFT_CLASS("_TtC21PayWiserOnboardingKYC27CountryPickerViewController")
+@interface CountryPickerViewController : UITableViewController
+- (void)viewDidLoad;
+- (nonnull instancetype)initWithStyle:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface CountryPickerViewController (SWIFT_EXTENSION(PayWiserOnboardingKYC)) <UISearchResultsUpdating>
+- (void)updateSearchResultsForSearchController:(UISearchController * _Nonnull)searchController;
+@end
+
+
+@interface CountryPickerViewController (SWIFT_EXTENSION(PayWiserOnboardingKYC))
+- (void)tableView:(UITableView * _Nonnull)tableView willDisplayHeaderView:(UIView * _Nonnull)view forSection:(NSInteger)section;
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+@end
+
+
+@interface CountryPickerViewController (SWIFT_EXTENSION(PayWiserOnboardingKYC)) <UISearchControllerDelegate>
+- (void)willPresentSearchController:(UISearchController * _Nonnull)searchController;
+- (void)willDismissSearchController:(UISearchController * _Nonnull)searchController;
+@end
+
+@class UISearchBar;
+
+@interface CountryPickerViewController (SWIFT_EXTENSION(PayWiserOnboardingKYC)) <UISearchBarDelegate>
+- (void)searchBarTextDidBeginEditing:(UISearchBar * _Nonnull)searchBar;
+- (void)searchBarCancelButtonClicked:(UISearchBar * _Nonnull)searchBar;
+@end
+
+
+
+@interface CountryPickerViewController (SWIFT_EXTENSION(PayWiserOnboardingKYC))
+- (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)tableView:(UITableView * _Nonnull)tableView titleForHeaderInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (NSArray<NSString *> * _Nullable)sectionIndexTitlesForTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView sectionForSectionIndexTitle:(NSString * _Nonnull)title atIndex:(NSInteger)index SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+
+
+
+
+
+
+
+
+
+SWIFT_CLASS("_TtC21PayWiserOnboardingKYC20PhoneNumberFormatter")
+@interface PhoneNumberFormatter : NSFormatter
+@property (nonatomic) BOOL generatesPhoneNumber;
+/// Override region to set a custom region. Automatically uses the default region code.
+@property (nonatomic, copy) NSString * _Nonnull defaultRegion;
+@property (nonatomic) BOOL withPrefix;
+@property (nonatomic, readonly, copy) NSString * _Nonnull currentRegion;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class NSString;
+
+@interface PhoneNumberFormatter (SWIFT_EXTENSION(PayWiserOnboardingKYC))
+- (NSString * _Nullable)stringForObjectValue:(id _Nullable)obj SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)getObjectValue:(id _Nullable * _Nullable)obj forString:(NSString * _Nonnull)string errorDescription:(NSString * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isPartialStringValid:(NSString * _Nonnull * _Nonnull)partialStringPtr proposedSelectedRange:(NSRangePointer _Nullable)proposedSelRangePtr originalString:(NSString * _Nonnull)origString originalSelectedRange:(NSRange)origSelRange errorDescription:(NSString * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC21PayWiserOnboardingKYC14PhoneNumberKit")
+@interface PhoneNumberKit : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+/// Custom text field that formats phone numbers
+SWIFT_CLASS("_TtC21PayWiserOnboardingKYC20PhoneNumberTextField")
+@interface PhoneNumberTextField : UITextField <UITextFieldDelegate>
+/// Override setText so number will be automatically formatted when setting text by code
+@property (nonatomic, copy) NSString * _Nullable text;
+@property (nonatomic, strong) id <UITextFieldDelegate> _Nullable delegate;
+- (void)layoutSubviews;
+/// Init with frame
+/// \param frame UITextfield F
+///
+///
+/// returns:
+/// UITextfield
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+/// Init with coder
+/// \param aDecoder decoder
+///
+///
+/// returns:
+/// UITextfield
+- (nonnull instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)textFieldShouldBeginEditing:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
+- (void)textFieldDidBeginEditing:(UITextField * _Nonnull)textField;
+- (BOOL)textFieldShouldEndEditing:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
+- (void)textFieldDidEndEditing:(UITextField * _Nonnull)textField;
+- (void)textFieldDidEndEditing:(UITextField * _Nonnull)textField reason:(UITextFieldDidEndEditingReason)reason SWIFT_AVAILABILITY(tvos,introduced=10.0) SWIFT_AVAILABILITY(ios,introduced=10.0);
+- (BOOL)textFieldShouldClear:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
+@end
 
 
 
@@ -269,11 +431,13 @@ SWIFT_CLASS("_TtC21PayWiserOnboardingKYC15SessionDelegate")
 
 
 
+
 @interface UINavigationController (SWIFT_EXTENSION(PayWiserOnboardingKYC))
 @property (nonatomic, readonly) BOOL shouldAutorotate;
 @property (nonatomic, readonly) UIInterfaceOrientation preferredInterfaceOrientationForPresentation;
 @property (nonatomic, readonly) UIInterfaceOrientationMask supportedInterfaceOrientations;
 @end
+
 
 
 
