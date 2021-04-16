@@ -432,6 +432,7 @@ SWIFT_CLASS("_TtC21PayWiserOnboardingKYC15SessionDelegate")
 
 
 
+
 @interface UINavigationController (SWIFT_EXTENSION(PayWiserOnboardingKYC))
 @property (nonatomic, readonly) BOOL shouldAutorotate;
 @property (nonatomic, readonly) UIInterfaceOrientation preferredInterfaceOrientationForPresentation;
