@@ -7,6 +7,6 @@ target 'PayWiserOnboardingKYC' do
 
   # Pods for PayWiserOnboardingKYC
   
-  pod 'VideoID', '7.1.11'
+  pod 'VideoID', '7.1.12'
 
 end
