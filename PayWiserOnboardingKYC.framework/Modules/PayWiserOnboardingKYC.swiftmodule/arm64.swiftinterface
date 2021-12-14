@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
+// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
 // swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name PayWiserOnboardingKYC
 import Combine
 import CoreTelephony
@@ -11,6 +11,7 @@ import Swift
 import SystemConfiguration
 import UIKit
 import VideoID
+import _Concurrency
 public struct PhoneNumber : Swift.Codable {
   public let numberString: Swift.String
   public let countryCode: Swift.UInt64
@@ -22,20 +23,20 @@ public struct PhoneNumber : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
-extension PhoneNumber : Swift.Equatable {
+extension PayWiserOnboardingKYC.PhoneNumber : Swift.Equatable {
   public static func == (lhs: PayWiserOnboardingKYC.PhoneNumber, rhs: PayWiserOnboardingKYC.PhoneNumber) -> Swift.Bool
 }
-extension PhoneNumber : Swift.Hashable {
+extension PayWiserOnboardingKYC.PhoneNumber : Swift.Hashable {
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
 }
-extension PhoneNumber {
+extension PayWiserOnboardingKYC.PhoneNumber {
   public static func notPhoneNumber() -> PayWiserOnboardingKYC.PhoneNumber
   public func notParsed() -> Swift.Bool
 }
-extension PhoneNumber {
+extension PayWiserOnboardingKYC.PhoneNumber {
   @available(*, unavailable, message: "use PhoneNumberKit instead to produce PhoneNumbers")
   public init(rawNumber: Swift.String) throws
   @available(*, unavailable, message: "use PhoneNumberKit instead to produce PhoneNumbers")
@@ -169,7 +170,7 @@ final public class URLEncodedFormEncoder {
   final public func encode(_ value: Swift.Encodable) throws -> Foundation.Data
   @objc deinit
 }
-extension CharacterSet {
+extension Foundation.CharacterSet {
   public static var afURLQueryAllowed: Foundation.CharacterSet
 }
 public protocol DataResponseSerializerProtocol {
@@ -196,7 +197,7 @@ public struct GoogleXSSIPreprocessor : PayWiserOnboardingKYC.DataPreprocessor {
   public init()
   public func preprocess(_ data: Foundation.Data) throws -> Foundation.Data
 }
-extension ResponseSerializer {
+extension PayWiserOnboardingKYC.ResponseSerializer {
   public static var defaultDataPreprocessor: PayWiserOnboardingKYC.DataPreprocessor {
     get
   }
@@ -219,16 +220,16 @@ extension ResponseSerializer {
   public func responseAllowsEmptyResponseData(_ response: Foundation.HTTPURLResponse?) -> Swift.Bool?
   public func emptyResponseAllowed(forRequest request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?) -> Swift.Bool
 }
-extension DownloadResponseSerializerProtocol where Self : PayWiserOnboardingKYC.DataResponseSerializerProtocol {
+extension PayWiserOnboardingKYC.DownloadResponseSerializerProtocol where Self : PayWiserOnboardingKYC.DataResponseSerializerProtocol {
   public func serializeDownload(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, fileURL: Foundation.URL?, error: Swift.Error?) throws -> Self.SerializedObject
 }
-extension DataRequest {
+extension PayWiserOnboardingKYC.DataRequest {
   @discardableResult
   public func response(queue: Dispatch.DispatchQueue = .main, completionHandler: @escaping (PayWiserOnboardingKYC.AFDataResponse<Foundation.Data?>) -> Swift.Void) -> Self
   @discardableResult
   public func response<Serializer>(queue: Dispatch.DispatchQueue = .main, responseSerializer: Serializer, completionHandler: @escaping (PayWiserOnboardingKYC.AFDataResponse<Serializer.SerializedObject>) -> Swift.Void) -> Self where Serializer : PayWiserOnboardingKYC.DataResponseSerializerProtocol
 }
-extension DownloadRequest {
+extension PayWiserOnboardingKYC.DownloadRequest {
   @discardableResult
   public func response(queue: Dispatch.DispatchQueue = .main, completionHandler: @escaping (PayWiserOnboardingKYC.AFDownloadResponse<Foundation.URL?>) -> Swift.Void) -> Self
   @discardableResult
@@ -243,11 +244,11 @@ final public class DataResponseSerializer : PayWiserOnboardingKYC.ResponseSerial
   public typealias SerializedObject = Foundation.Data
   @objc deinit
 }
-extension DataRequest {
+extension PayWiserOnboardingKYC.DataRequest {
   @discardableResult
   public func responseData(queue: Dispatch.DispatchQueue = .main, dataPreprocessor: PayWiserOnboardingKYC.DataPreprocessor = DataResponseSerializer.defaultDataPreprocessor, emptyResponseCodes: Swift.Set<Swift.Int> = DataResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<PayWiserOnboardingKYC.HTTPMethod> = DataResponseSerializer.defaultEmptyRequestMethods, completionHandler: @escaping (PayWiserOnboardingKYC.AFDataResponse<Foundation.Data>) -> Swift.Void) -> Self
 }
-extension DownloadRequest {
+extension PayWiserOnboardingKYC.DownloadRequest {
   @discardableResult
   public func responseData(queue: Dispatch.DispatchQueue = .main, dataPreprocessor: PayWiserOnboardingKYC.DataPreprocessor = DataResponseSerializer.defaultDataPreprocessor, emptyResponseCodes: Swift.Set<Swift.Int> = DataResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<PayWiserOnboardingKYC.HTTPMethod> = DataResponseSerializer.defaultEmptyRequestMethods, completionHandler: @escaping (PayWiserOnboardingKYC.AFDownloadResponse<Foundation.Data>) -> Swift.Void) -> Self
 }
@@ -261,11 +262,11 @@ final public class StringResponseSerializer : PayWiserOnboardingKYC.ResponseSeri
   public typealias SerializedObject = Swift.String
   @objc deinit
 }
-extension DataRequest {
+extension PayWiserOnboardingKYC.DataRequest {
   @discardableResult
   public func responseString(queue: Dispatch.DispatchQueue = .main, dataPreprocessor: PayWiserOnboardingKYC.DataPreprocessor = StringResponseSerializer.defaultDataPreprocessor, encoding: Swift.String.Encoding? = nil, emptyResponseCodes: Swift.Set<Swift.Int> = StringResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<PayWiserOnboardingKYC.HTTPMethod> = StringResponseSerializer.defaultEmptyRequestMethods, completionHandler: @escaping (PayWiserOnboardingKYC.AFDataResponse<Swift.String>) -> Swift.Void) -> Self
 }
-extension DownloadRequest {
+extension PayWiserOnboardingKYC.DownloadRequest {
   @discardableResult
   public func responseString(queue: Dispatch.DispatchQueue = .main, dataPreprocessor: PayWiserOnboardingKYC.DataPreprocessor = StringResponseSerializer.defaultDataPreprocessor, encoding: Swift.String.Encoding? = nil, emptyResponseCodes: Swift.Set<Swift.Int> = StringResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<PayWiserOnboardingKYC.HTTPMethod> = StringResponseSerializer.defaultEmptyRequestMethods, completionHandler: @escaping (PayWiserOnboardingKYC.AFDownloadResponse<Swift.String>) -> Swift.Void) -> Self
 }
@@ -279,11 +280,11 @@ final public class JSONResponseSerializer : PayWiserOnboardingKYC.ResponseSerial
   public typealias SerializedObject = Any
   @objc deinit
 }
-extension DataRequest {
+extension PayWiserOnboardingKYC.DataRequest {
   @discardableResult
   public func responseJSON(queue: Dispatch.DispatchQueue = .main, dataPreprocessor: PayWiserOnboardingKYC.DataPreprocessor = JSONResponseSerializer.defaultDataPreprocessor, emptyResponseCodes: Swift.Set<Swift.Int> = JSONResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<PayWiserOnboardingKYC.HTTPMethod> = JSONResponseSerializer.defaultEmptyRequestMethods, options: Foundation.JSONSerialization.ReadingOptions = .allowFragments, completionHandler: @escaping (PayWiserOnboardingKYC.AFDataResponse<Any>) -> Swift.Void) -> Self
 }
-extension DownloadRequest {
+extension PayWiserOnboardingKYC.DownloadRequest {
   @discardableResult
   public func responseJSON(queue: Dispatch.DispatchQueue = .main, dataPreprocessor: PayWiserOnboardingKYC.DataPreprocessor = JSONResponseSerializer.defaultDataPreprocessor, emptyResponseCodes: Swift.Set<Swift.Int> = JSONResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<PayWiserOnboardingKYC.HTTPMethod> = JSONResponseSerializer.defaultEmptyRequestMethods, options: Foundation.JSONSerialization.ReadingOptions = .allowFragments, completionHandler: @escaping (PayWiserOnboardingKYC.AFDownloadResponse<Any>) -> Swift.Void) -> Self
 }
@@ -295,15 +296,15 @@ public struct Empty : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
-extension Empty : PayWiserOnboardingKYC.EmptyResponse {
+extension PayWiserOnboardingKYC.Empty : PayWiserOnboardingKYC.EmptyResponse {
   public static func emptyValue() -> PayWiserOnboardingKYC.Empty
 }
 public protocol DataDecoder {
   func decode<D>(_ type: D.Type, from data: Foundation.Data) throws -> D where D : Swift.Decodable
 }
-extension JSONDecoder : PayWiserOnboardingKYC.DataDecoder {
+extension Foundation.JSONDecoder : PayWiserOnboardingKYC.DataDecoder {
 }
-extension PropertyListDecoder : PayWiserOnboardingKYC.DataDecoder {
+extension Foundation.PropertyListDecoder : PayWiserOnboardingKYC.DataDecoder {
 }
 final public class DecodableResponseSerializer<T> : PayWiserOnboardingKYC.ResponseSerializer where T : Swift.Decodable {
   final public let dataPreprocessor: PayWiserOnboardingKYC.DataPreprocessor
@@ -315,11 +316,11 @@ final public class DecodableResponseSerializer<T> : PayWiserOnboardingKYC.Respon
   public typealias SerializedObject = T
   @objc deinit
 }
-extension DataRequest {
+extension PayWiserOnboardingKYC.DataRequest {
   @discardableResult
   public func responseDecodable<T>(of type: T.Type = T.self, queue: Dispatch.DispatchQueue = .main, dataPreprocessor: PayWiserOnboardingKYC.DataPreprocessor = DecodableResponseSerializer<T>.defaultDataPreprocessor, decoder: PayWiserOnboardingKYC.DataDecoder = JSONDecoder(), emptyResponseCodes: Swift.Set<Swift.Int> = DecodableResponseSerializer<T>.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<PayWiserOnboardingKYC.HTTPMethod> = DecodableResponseSerializer<T>.defaultEmptyRequestMethods, completionHandler: @escaping (PayWiserOnboardingKYC.AFDataResponse<T>) -> Swift.Void) -> Self where T : Swift.Decodable
 }
-extension DownloadRequest {
+extension PayWiserOnboardingKYC.DownloadRequest {
   @discardableResult
   public func responseDecodable<T>(of type: T.Type = T.self, queue: Dispatch.DispatchQueue = .main, dataPreprocessor: PayWiserOnboardingKYC.DataPreprocessor = DecodableResponseSerializer<T>.defaultDataPreprocessor, decoder: PayWiserOnboardingKYC.DataDecoder = JSONDecoder(), emptyResponseCodes: Swift.Set<Swift.Int> = DecodableResponseSerializer<T>.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<PayWiserOnboardingKYC.HTTPMethod> = DecodableResponseSerializer<T>.defaultEmptyRequestMethods, completionHandler: @escaping (PayWiserOnboardingKYC.AFDownloadResponse<T>) -> Swift.Void) -> Self where T : Swift.Decodable
 }
@@ -342,7 +343,7 @@ public struct StringStreamSerializer : PayWiserOnboardingKYC.DataStreamSerialize
   public func serialize(_ data: Foundation.Data) throws -> Swift.String
   public typealias SerializedObject = Swift.String
 }
-extension DataStreamRequest {
+extension PayWiserOnboardingKYC.DataStreamRequest {
   @discardableResult
   final public func responseStream(on queue: Dispatch.DispatchQueue = .main, stream: @escaping PayWiserOnboardingKYC.DataStreamRequest.Handler<Foundation.Data, Swift.Never>) -> Self
   @discardableResult
@@ -374,59 +375,59 @@ public struct Country : Swift.Equatable {
 }
 public func == (lhs: PayWiserOnboardingKYC.Country, rhs: PayWiserOnboardingKYC.Country) -> Swift.Bool
 public func != (lhs: PayWiserOnboardingKYC.Country, rhs: PayWiserOnboardingKYC.Country) -> Swift.Bool
-@objc @_inheritsConvenienceInitializers public class CountryPickerView : PayWiserOnboardingKYC.NibView {
-  @objc @IBOutlet weak public var flagImageView: UIKit.UIImageView! {
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class CountryPickerView : PayWiserOnboardingKYC.NibView {
+  @objc @IBOutlet @_Concurrency.MainActor(unsafe) weak public var flagImageView: UIKit.UIImageView! {
     @objc get
     @objc set(value)
   }
-  @objc @IBOutlet weak public var countryDetailsLabel: UIKit.UILabel!
-  public var showCountryCodeInView: Swift.Bool {
+  @objc @IBOutlet @_Concurrency.MainActor(unsafe) weak public var countryDetailsLabel: UIKit.UILabel!
+  @_Concurrency.MainActor(unsafe) public var showCountryCodeInView: Swift.Bool {
     get
     set(value)
   }
-  public var showPhoneCodeInView: Swift.Bool {
+  @_Concurrency.MainActor(unsafe) public var showPhoneCodeInView: Swift.Bool {
     get
     set(value)
   }
-  public var showCountryNameInView: Swift.Bool {
+  @_Concurrency.MainActor(unsafe) public var showCountryNameInView: Swift.Bool {
     get
     set(value)
   }
-  public var font: UIKit.UIFont {
+  @_Concurrency.MainActor(unsafe) public var font: UIKit.UIFont {
     get
     set(value)
   }
-  public var textColor: UIKit.UIColor {
+  @_Concurrency.MainActor(unsafe) public var textColor: UIKit.UIColor {
     get
     set(value)
   }
-  public var flagSpacingInView: CoreGraphics.CGFloat {
+  @_Concurrency.MainActor(unsafe) public var flagSpacingInView: CoreGraphics.CGFloat {
     get
     set(newValue)
   }
-  weak public var dataSource: PayWiserOnboardingKYC.CountryPickerViewDataSource?
-  weak public var delegate: PayWiserOnboardingKYC.CountryPickerViewDelegate?
-  weak public var hostViewController: UIKit.UIViewController?
-  public var selectedCountry: PayWiserOnboardingKYC.Country {
+  @_Concurrency.MainActor(unsafe) weak public var dataSource: PayWiserOnboardingKYC.CountryPickerViewDataSource?
+  @_Concurrency.MainActor(unsafe) weak public var delegate: PayWiserOnboardingKYC.CountryPickerViewDelegate?
+  @_Concurrency.MainActor(unsafe) weak public var hostViewController: UIKit.UIViewController?
+  @_Concurrency.MainActor(unsafe) public var selectedCountry: PayWiserOnboardingKYC.Country {
     get
   }
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  public func showCountriesList(from viewController: UIKit.UIViewController)
-  final public let countries: [PayWiserOnboardingKYC.Country]
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) public func showCountriesList(from viewController: UIKit.UIViewController)
+  @_Concurrency.MainActor(unsafe) final public let countries: [PayWiserOnboardingKYC.Country]
   @objc deinit
 }
-extension CountryPickerView {
-  public func setCountryByName(_ name: Swift.String)
-  public func setCountryByPhoneCode(_ phoneCode: Swift.String)
-  public func setCountryByCode(_ code: Swift.String)
-  public func getCountryByName(_ name: Swift.String) -> PayWiserOnboardingKYC.Country?
-  public func getCountryByPhoneCode(_ phoneCode: Swift.String) -> PayWiserOnboardingKYC.Country?
-  public func getCountryByCode(_ code: Swift.String) -> PayWiserOnboardingKYC.Country?
+extension PayWiserOnboardingKYC.CountryPickerView {
+  @_Concurrency.MainActor(unsafe) public func setCountryByName(_ name: Swift.String)
+  @_Concurrency.MainActor(unsafe) public func setCountryByPhoneCode(_ phoneCode: Swift.String)
+  @_Concurrency.MainActor(unsafe) public func setCountryByCode(_ code: Swift.String)
+  @_Concurrency.MainActor(unsafe) public func getCountryByName(_ name: Swift.String) -> PayWiserOnboardingKYC.Country?
+  @_Concurrency.MainActor(unsafe) public func getCountryByPhoneCode(_ phoneCode: Swift.String) -> PayWiserOnboardingKYC.Country?
+  @_Concurrency.MainActor(unsafe) public func getCountryByCode(_ code: Swift.String) -> PayWiserOnboardingKYC.Country?
 }
-@objc @_inheritsConvenienceInitializers public class NibView : UIKit.UIView {
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class NibView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
 }
 open class MultipartFormData {
@@ -469,19 +470,19 @@ public struct HTTPHeaders {
     get
   }
 }
-extension HTTPHeaders : Swift.ExpressibleByDictionaryLiteral {
+extension PayWiserOnboardingKYC.HTTPHeaders : Swift.ExpressibleByDictionaryLiteral {
   public init(dictionaryLiteral elements: (Swift.String, Swift.String)...)
   public typealias Key = Swift.String
   public typealias Value = Swift.String
 }
-extension HTTPHeaders : Swift.ExpressibleByArrayLiteral {
+extension PayWiserOnboardingKYC.HTTPHeaders : Swift.ExpressibleByArrayLiteral {
   public init(arrayLiteral elements: PayWiserOnboardingKYC.HTTPHeader...)
   public typealias ArrayLiteralElement = PayWiserOnboardingKYC.HTTPHeader
 }
-extension HTTPHeaders : Swift.Sequence {
+extension PayWiserOnboardingKYC.HTTPHeaders : Swift.Sequence {
   public func makeIterator() -> Swift.IndexingIterator<[PayWiserOnboardingKYC.HTTPHeader]>
 }
-extension HTTPHeaders : Swift.Collection {
+extension PayWiserOnboardingKYC.HTTPHeaders : Swift.Collection {
   public var startIndex: Swift.Int {
     get
   }
@@ -498,7 +499,7 @@ extension HTTPHeaders : Swift.Collection {
   public typealias Iterator = Swift.IndexingIterator<[PayWiserOnboardingKYC.HTTPHeader]>
   public typealias SubSequence = Swift.Slice<PayWiserOnboardingKYC.HTTPHeaders>
 }
-extension HTTPHeaders : Swift.CustomStringConvertible {
+extension PayWiserOnboardingKYC.HTTPHeaders : Swift.CustomStringConvertible {
   public var description: Swift.String {
     get
   }
@@ -513,12 +514,12 @@ public struct HTTPHeader : Swift.Hashable {
     get
   }
 }
-extension HTTPHeader : Swift.CustomStringConvertible {
+extension PayWiserOnboardingKYC.HTTPHeader : Swift.CustomStringConvertible {
   public var description: Swift.String {
     get
   }
 }
-extension HTTPHeader {
+extension PayWiserOnboardingKYC.HTTPHeader {
   public static func accept(_ value: Swift.String) -> PayWiserOnboardingKYC.HTTPHeader
   public static func acceptCharset(_ value: Swift.String) -> PayWiserOnboardingKYC.HTTPHeader
   public static func acceptLanguage(_ value: Swift.String) -> PayWiserOnboardingKYC.HTTPHeader
@@ -530,26 +531,26 @@ extension HTTPHeader {
   public static func contentType(_ value: Swift.String) -> PayWiserOnboardingKYC.HTTPHeader
   public static func userAgent(_ value: Swift.String) -> PayWiserOnboardingKYC.HTTPHeader
 }
-extension HTTPHeaders {
+extension PayWiserOnboardingKYC.HTTPHeaders {
   public static var `default`: PayWiserOnboardingKYC.HTTPHeaders
 }
-extension HTTPHeader {
+extension PayWiserOnboardingKYC.HTTPHeader {
   public static var defaultAcceptEncoding: PayWiserOnboardingKYC.HTTPHeader
   public static var defaultAcceptLanguage: PayWiserOnboardingKYC.HTTPHeader
   public static var defaultUserAgent: PayWiserOnboardingKYC.HTTPHeader
 }
-extension URLRequest {
+extension Foundation.URLRequest {
   public var headers: PayWiserOnboardingKYC.HTTPHeaders {
     get
     set(newValue)
   }
 }
-extension HTTPURLResponse {
+extension Foundation.HTTPURLResponse {
   public var headers: PayWiserOnboardingKYC.HTTPHeaders {
     get
   }
 }
-extension URLSessionConfiguration {
+extension Foundation.URLSessionConfiguration {
   public var headers: PayWiserOnboardingKYC.HTTPHeaders {
     get
     set(newValue)
@@ -575,49 +576,49 @@ final public class KycUserData {
   public init(firstName: Swift.String?, middleName: Swift.String?, lastName: Swift.String?, address1: Swift.String?, address2: Swift.String?, address3: Swift.String?, zipCode: Swift.String?, city: Swift.String?, state: Swift.String?, countryCode: Swift.String?, email: Swift.String?, mobileNumber: Swift.String?)
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class CountryPickerViewController : UIKit.UITableViewController {
-  public var searchController: UIKit.UISearchController?
-  @objc override dynamic public func viewDidLoad()
-  @objc override dynamic public init(style: UIKit.UITableView.Style)
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @objc required dynamic public init?(coder: Foundation.NSCoder)
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class CountryPickerViewController : UIKit.UITableViewController {
+  @_Concurrency.MainActor(unsafe) public var searchController: UIKit.UISearchController?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(style: UIKit.UITableView.Style)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
-extension CountryPickerViewController {
-  @objc override dynamic public func numberOfSections(in tableView: UIKit.UITableView) -> Swift.Int
-  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
-  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
-  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, titleForHeaderInSection section: Swift.Int) -> Swift.String?
-  @objc override dynamic public func sectionIndexTitles(for tableView: UIKit.UITableView) -> [Swift.String]?
-  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, sectionForSectionIndexTitle title: Swift.String, at index: Swift.Int) -> Swift.Int
+extension PayWiserOnboardingKYC.CountryPickerViewController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func numberOfSections(in tableView: UIKit.UITableView) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, titleForHeaderInSection section: Swift.Int) -> Swift.String?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func sectionIndexTitles(for tableView: UIKit.UITableView) -> [Swift.String]?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, sectionForSectionIndexTitle title: Swift.String, at index: Swift.Int) -> Swift.Int
 }
-extension CountryPickerViewController {
-  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, willDisplayHeaderView view: UIKit.UIView, forSection section: Swift.Int)
-  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
+extension PayWiserOnboardingKYC.CountryPickerViewController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, willDisplayHeaderView view: UIKit.UIView, forSection section: Swift.Int)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
 }
-extension CountryPickerViewController : UIKit.UISearchResultsUpdating {
-  @objc dynamic public func updateSearchResults(for searchController: UIKit.UISearchController)
+extension PayWiserOnboardingKYC.CountryPickerViewController : UIKit.UISearchResultsUpdating {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func updateSearchResults(for searchController: UIKit.UISearchController)
 }
-extension CountryPickerViewController : UIKit.UISearchBarDelegate {
-  @objc dynamic public func searchBarTextDidBeginEditing(_ searchBar: UIKit.UISearchBar)
-  @objc dynamic public func searchBarCancelButtonClicked(_ searchBar: UIKit.UISearchBar)
+extension PayWiserOnboardingKYC.CountryPickerViewController : UIKit.UISearchBarDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func searchBarTextDidBeginEditing(_ searchBar: UIKit.UISearchBar)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func searchBarCancelButtonClicked(_ searchBar: UIKit.UISearchBar)
 }
-extension CountryPickerViewController : UIKit.UISearchControllerDelegate {
-  @objc dynamic public func willPresentSearchController(_ searchController: UIKit.UISearchController)
-  @objc dynamic public func willDismissSearchController(_ searchController: UIKit.UISearchController)
+extension PayWiserOnboardingKYC.CountryPickerViewController : UIKit.UISearchControllerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func willPresentSearchController(_ searchController: UIKit.UISearchController)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func willDismissSearchController(_ searchController: UIKit.UISearchController)
 }
-extension UIColor {
+extension UIKit.UIColor {
   public convenience init?(hex: Swift.String)
 }
-extension UINavigationController {
-  @objc override dynamic open var shouldAutorotate: Swift.Bool {
-    @objc get
+extension UIKit.UINavigationController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var shouldAutorotate: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) @objc get
   }
-  @objc override dynamic open var preferredInterfaceOrientationForPresentation: UIKit.UIInterfaceOrientation {
-    @objc get
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var preferredInterfaceOrientationForPresentation: UIKit.UIInterfaceOrientation {
+    @_Concurrency.MainActor(unsafe) @objc get
   }
-  @objc override dynamic open var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
-    @objc get
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+    @_Concurrency.MainActor(unsafe) @objc get
   }
 }
 public protocol CachedResponseHandler {
@@ -634,7 +635,7 @@ public struct ResponseCacher {
   public let behavior: PayWiserOnboardingKYC.ResponseCacher.Behavior
   public init(behavior: PayWiserOnboardingKYC.ResponseCacher.Behavior)
 }
-extension ResponseCacher : PayWiserOnboardingKYC.CachedResponseHandler {
+extension PayWiserOnboardingKYC.ResponseCacher : PayWiserOnboardingKYC.CachedResponseHandler {
   public func dataTask(_ task: Foundation.URLSessionDataTask, willCacheResponse response: Foundation.CachedURLResponse, completion: @escaping (Foundation.CachedURLResponse?) -> Swift.Void)
 }
 public struct MetadataTerritory : Swift.Decodable {
@@ -701,7 +702,6 @@ open class RetryPolicy : PayWiserOnboardingKYC.RequestInterceptor {
 }
 open class ConnectionLostRetryPolicy : PayWiserOnboardingKYC.RetryPolicy {
   public init(retryLimit: Swift.UInt = RetryPolicy.defaultRetryLimit, exponentialBackoffBase: Swift.UInt = RetryPolicy.defaultExponentialBackoffBase, exponentialBackoffScale: Swift.Double = RetryPolicy.defaultExponentialBackoffScale, retryableHTTPMethods: Swift.Set<PayWiserOnboardingKYC.HTTPMethod> = RetryPolicy.defaultRetryableHTTPMethods)
-  override public init(retryLimit: Swift.UInt = super, exponentialBackoffBase: Swift.UInt = super, exponentialBackoffScale: Swift.Double = super, retryableHTTPMethods: Swift.Set<PayWiserOnboardingKYC.HTTPMethod> = super, retryableHTTPStatusCodes: Swift.Set<Swift.Int> = super, retryableURLErrorCodes: Swift.Set<Foundation.URLError.Code> = super)
   @objc deinit
 }
 @objc open class PhoneNumberFormatter : Foundation.Formatter {
@@ -720,10 +720,9 @@ open class ConnectionLostRetryPolicy : PayWiserOnboardingKYC.RetryPolicy {
   }
   public init(phoneNumberKit pnk: PayWiserOnboardingKYC.PhoneNumberKit = PhoneNumberKit(), defaultRegion: Swift.String = PhoneNumberKit.defaultRegionCode(), withPrefix: Swift.Bool = true)
   @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  @objc override dynamic public init()
   @objc deinit
 }
-extension PhoneNumberFormatter {
+extension PayWiserOnboardingKYC.PhoneNumberFormatter {
   @objc override dynamic open func string(for obj: Any?) -> Swift.String?
   @objc override dynamic open func getObjectValue(_ obj: Swift.AutoreleasingUnsafeMutablePointer<Swift.AnyObject?>?, for string: Swift.String, errorDescription error: Swift.AutoreleasingUnsafeMutablePointer<Foundation.NSString?>?) -> Swift.Bool
   @objc override dynamic open func isPartialStringValid(_ partialStringPtr: Swift.AutoreleasingUnsafeMutablePointer<Foundation.NSString>, proposedSelectedRange proposedSelRangePtr: Foundation.NSRangePointer?, originalString origString: Swift.String, originalSelectedRange origSelRange: Foundation.NSRange, errorDescription error: Swift.AutoreleasingUnsafeMutablePointer<Foundation.NSString?>?) -> Swift.Bool
@@ -768,10 +767,10 @@ extension PhoneNumberFormatter {
   open func startListening(onQueue queue: Dispatch.DispatchQueue = .main, onUpdatePerforming listener: @escaping PayWiserOnboardingKYC.NetworkReachabilityManager.Listener) -> Swift.Bool
   open func stopListening()
 }
-extension NetworkReachabilityManager.NetworkReachabilityStatus : Swift.Equatable {
+extension PayWiserOnboardingKYC.NetworkReachabilityManager.NetworkReachabilityStatus : Swift.Equatable {
   public static func == (a: PayWiserOnboardingKYC.NetworkReachabilityManager.NetworkReachabilityStatus, b: PayWiserOnboardingKYC.NetworkReachabilityManager.NetworkReachabilityStatus) -> Swift.Bool
 }
-extension MetadataTerritory {
+extension PayWiserOnboardingKYC.MetadataTerritory {
   public enum CodingKeys : Swift.String, Swift.CodingKey {
     case codeID
     case countryCode
@@ -813,7 +812,7 @@ extension MetadataTerritory {
   }
   public init(from decoder: Swift.Decoder) throws
 }
-extension MetadataPhoneNumberFormat {
+extension PayWiserOnboardingKYC.MetadataPhoneNumberFormat {
   public enum CodingKeys : Swift.String, Swift.CodingKey {
     case pattern
     case format
@@ -849,7 +848,7 @@ public protocol AlamofireExtended {
   static var af: PayWiserOnboardingKYC.AlamofireExtension<Self.ExtendedType>.Type { get set }
   var af: PayWiserOnboardingKYC.AlamofireExtension<Self.ExtendedType> { get set }
 }
-extension AlamofireExtended {
+extension PayWiserOnboardingKYC.AlamofireExtended {
   public static var af: PayWiserOnboardingKYC.AlamofireExtension<Self>.Type {
     get
     set(newValue)
@@ -914,13 +913,13 @@ final public class DisabledTrustEvaluator : PayWiserOnboardingKYC.ServerTrustEva
   final public func evaluate(_ trust: Security.SecTrust, forHost host: Swift.String) throws
   @objc deinit
 }
-extension Array where Element == PayWiserOnboardingKYC.ServerTrustEvaluating {
+extension Swift.Array where Element == PayWiserOnboardingKYC.ServerTrustEvaluating {
   public func evaluate(_ trust: Security.SecTrust, forHost host: Swift.String) throws
 }
-extension Bundle : PayWiserOnboardingKYC.AlamofireExtended {
+extension Foundation.Bundle : PayWiserOnboardingKYC.AlamofireExtended {
   public typealias ExtendedType = Foundation.Bundle
 }
-extension AlamofireExtension where ExtendedType : Foundation.Bundle {
+extension PayWiserOnboardingKYC.AlamofireExtension where ExtendedType : Foundation.Bundle {
   public var certificates: [Security.SecCertificate] {
     get
   }
@@ -929,17 +928,17 @@ extension AlamofireExtension where ExtendedType : Foundation.Bundle {
   }
   public func paths(forResourcesOfTypes types: [Swift.String]) -> [Swift.String]
 }
-extension SecTrust : PayWiserOnboardingKYC.AlamofireExtended {
+extension Security.SecTrust : PayWiserOnboardingKYC.AlamofireExtended {
   public typealias ExtendedType = Security.SecTrust
 }
-extension AlamofireExtension where ExtendedType == Security.SecTrust {
+extension PayWiserOnboardingKYC.AlamofireExtension where ExtendedType == Security.SecTrust {
   @available(iOS 12, macOS 10.14, tvOS 12, watchOS 5, *)
   public func evaluate(afterApplying policy: Security.SecPolicy) throws
   @available(iOS, introduced: 10, deprecated: 12, renamed: "evaluate(afterApplying:)")
   @available(macOS, introduced: 10.12, deprecated: 10.14, renamed: "evaluate(afterApplying:)")
   @available(tvOS, introduced: 10, deprecated: 12, renamed: "evaluate(afterApplying:)")
   @available(watchOS, introduced: 3, deprecated: 5, renamed: "evaluate(afterApplying:)")
-  public func validate(policy: Security.SecPolicy, errorProducer: (Darwin.OSStatus, Security.SecTrustResultType) -> Swift.Error) throws
+  public func validate(policy: Security.SecPolicy, errorProducer: (_ status: Darwin.OSStatus, _ result: Security.SecTrustResultType) -> Swift.Error) throws
   public func apply(policy: Security.SecPolicy) throws -> Security.SecTrust
   @available(iOS 12, macOS 10.14, tvOS 12, watchOS 5, *)
   public func evaluate() throws
@@ -947,7 +946,7 @@ extension AlamofireExtension where ExtendedType == Security.SecTrust {
   @available(macOS, introduced: 10.12, deprecated: 10.14, renamed: "evaluate()")
   @available(tvOS, introduced: 10, deprecated: 12, renamed: "evaluate()")
   @available(watchOS, introduced: 3, deprecated: 5, renamed: "evaluate()")
-  public func validate(errorProducer: (Darwin.OSStatus, Security.SecTrustResultType) -> Swift.Error) throws
+  public func validate(errorProducer: (_ status: Darwin.OSStatus, _ result: Security.SecTrustResultType) -> Swift.Error) throws
   public func setAnchorCertificates(_ certificates: [Security.SecCertificate]) throws
   public var publicKeys: [Security.SecKey] {
     get
@@ -961,18 +960,18 @@ extension AlamofireExtension where ExtendedType == Security.SecTrust {
   public func performDefaultValidation(forHost host: Swift.String) throws
   public func performValidation(forHost host: Swift.String) throws
 }
-extension SecPolicy : PayWiserOnboardingKYC.AlamofireExtended {
+extension Security.SecPolicy : PayWiserOnboardingKYC.AlamofireExtended {
   public typealias ExtendedType = Security.SecPolicy
 }
-extension AlamofireExtension where ExtendedType == Security.SecPolicy {
+extension PayWiserOnboardingKYC.AlamofireExtension where ExtendedType == Security.SecPolicy {
   public static var `default`: Security.SecPolicy
   public static func hostname(_ hostname: Swift.String) -> Security.SecPolicy
   public static func revocation(options: PayWiserOnboardingKYC.RevocationTrustEvaluator.Options) throws -> Security.SecPolicy
 }
-extension Array : PayWiserOnboardingKYC.AlamofireExtended {
+extension Swift.Array : PayWiserOnboardingKYC.AlamofireExtended {
   public typealias ExtendedType = Swift.Array<Element>
 }
-extension AlamofireExtension where ExtendedType == [Security.SecCertificate] {
+extension PayWiserOnboardingKYC.AlamofireExtension where ExtendedType == [Security.SecCertificate] {
   public var data: [Foundation.Data] {
     get
   }
@@ -980,26 +979,26 @@ extension AlamofireExtension where ExtendedType == [Security.SecCertificate] {
     get
   }
 }
-extension SecCertificate : PayWiserOnboardingKYC.AlamofireExtended {
+extension Security.SecCertificate : PayWiserOnboardingKYC.AlamofireExtended {
   public typealias ExtendedType = Security.SecCertificate
 }
-extension AlamofireExtension where ExtendedType == Security.SecCertificate {
+extension PayWiserOnboardingKYC.AlamofireExtension where ExtendedType == Security.SecCertificate {
   public var publicKey: Security.SecKey? {
     get
   }
 }
-extension Int32 : PayWiserOnboardingKYC.AlamofireExtended {
+extension Swift.Int32 : PayWiserOnboardingKYC.AlamofireExtended {
   public typealias ExtendedType = Swift.Int32
 }
-extension AlamofireExtension where ExtendedType == Darwin.OSStatus {
+extension PayWiserOnboardingKYC.AlamofireExtension where ExtendedType == Darwin.OSStatus {
   public var isSuccess: Swift.Bool {
     get
   }
 }
-extension SecTrustResultType : PayWiserOnboardingKYC.AlamofireExtended {
+extension Security.SecTrustResultType : PayWiserOnboardingKYC.AlamofireExtended {
   public typealias ExtendedType = Security.SecTrustResultType
 }
-extension AlamofireExtension where ExtendedType == Security.SecTrustResultType {
+extension PayWiserOnboardingKYC.AlamofireExtension where ExtendedType == Security.SecTrustResultType {
   public var isSuccess: Swift.Bool {
     get
   }
@@ -1019,7 +1018,7 @@ public enum PhoneNumberError : Swift.Error {
     get
   }
 }
-extension PhoneNumberError : Foundation.LocalizedError {
+extension PayWiserOnboardingKYC.PhoneNumberError : Foundation.LocalizedError {
   public var errorDescription: Swift.String? {
     get
   }
@@ -1091,7 +1090,7 @@ public struct Redirector {
   public let behavior: PayWiserOnboardingKYC.Redirector.Behavior
   public init(behavior: PayWiserOnboardingKYC.Redirector.Behavior)
 }
-extension Redirector : PayWiserOnboardingKYC.RedirectHandler {
+extension PayWiserOnboardingKYC.Redirector : PayWiserOnboardingKYC.RedirectHandler {
   public func task(_ task: Foundation.URLSessionTask, willBeRedirectedTo request: Foundation.URLRequest, for response: Foundation.HTTPURLResponse, completion: @escaping (Foundation.URLRequest?) -> Swift.Void)
 }
 public protocol RequestAdapter {
@@ -1108,12 +1107,12 @@ public protocol RequestRetrier {
 }
 public protocol RequestInterceptor : PayWiserOnboardingKYC.RequestAdapter, PayWiserOnboardingKYC.RequestRetrier {
 }
-extension RequestInterceptor {
+extension PayWiserOnboardingKYC.RequestInterceptor {
   public func adapt(_ urlRequest: Foundation.URLRequest, for session: PayWiserOnboardingKYC.Session, completion: @escaping (Swift.Result<Foundation.URLRequest, Swift.Error>) -> Swift.Void)
   public func retry(_ request: PayWiserOnboardingKYC.Request, for session: PayWiserOnboardingKYC.Session, dueTo error: Swift.Error, completion: @escaping (PayWiserOnboardingKYC.RetryResult) -> Swift.Void)
 }
-public typealias AdaptHandler = (Foundation.URLRequest, PayWiserOnboardingKYC.Session, @escaping (Swift.Result<Foundation.URLRequest, Swift.Error>) -> Swift.Void) -> Swift.Void
-public typealias RetryHandler = (PayWiserOnboardingKYC.Request, PayWiserOnboardingKYC.Session, Swift.Error, @escaping (PayWiserOnboardingKYC.RetryResult) -> Swift.Void) -> Swift.Void
+public typealias AdaptHandler = (Foundation.URLRequest, PayWiserOnboardingKYC.Session, _ completion: @escaping (Swift.Result<Foundation.URLRequest, Swift.Error>) -> Swift.Void) -> Swift.Void
+public typealias RetryHandler = (PayWiserOnboardingKYC.Request, PayWiserOnboardingKYC.Session, Swift.Error, _ completion: @escaping (PayWiserOnboardingKYC.RetryResult) -> Swift.Void) -> Swift.Void
 open class Adapter : PayWiserOnboardingKYC.RequestInterceptor {
   public init(_ adaptHandler: @escaping PayWiserOnboardingKYC.AdaptHandler)
   open func adapt(_ urlRequest: Foundation.URLRequest, for session: PayWiserOnboardingKYC.Session, completion: @escaping (Swift.Result<Foundation.URLRequest, Swift.Error>) -> Swift.Void)
@@ -1134,10 +1133,10 @@ open class Interceptor : PayWiserOnboardingKYC.RequestInterceptor {
   open func retry(_ request: PayWiserOnboardingKYC.Request, for session: PayWiserOnboardingKYC.Session, dueTo error: Swift.Error, completion: @escaping (PayWiserOnboardingKYC.RetryResult) -> Swift.Void)
   @objc deinit
 }
-extension URLSessionConfiguration : PayWiserOnboardingKYC.AlamofireExtended {
+extension Foundation.URLSessionConfiguration : PayWiserOnboardingKYC.AlamofireExtended {
   public typealias ExtendedType = Foundation.URLSessionConfiguration
 }
-extension AlamofireExtension where ExtendedType : Foundation.URLSessionConfiguration {
+extension PayWiserOnboardingKYC.AlamofireExtension where ExtendedType : Foundation.URLSessionConfiguration {
   public static var `default`: Foundation.URLSessionConfiguration {
     get
   }
@@ -1204,7 +1203,7 @@ public protocol VerificationResultProtocol {
   final public func getStatusDescription() -> Swift.String
   @objc deinit
 }
-extension URLRequest {
+extension Foundation.URLRequest {
   public var method: PayWiserOnboardingKYC.HTTPMethod? {
     get
     set(newValue)
@@ -1332,21 +1331,21 @@ extension URLRequest {
   public func cURLDescription(calling handler: @escaping (Swift.String) -> Swift.Void) -> Self
   @objc deinit
 }
-extension Request : Swift.Equatable {
+extension PayWiserOnboardingKYC.Request : Swift.Equatable {
   public static func == (lhs: PayWiserOnboardingKYC.Request, rhs: PayWiserOnboardingKYC.Request) -> Swift.Bool
 }
-extension Request : Swift.Hashable {
+extension PayWiserOnboardingKYC.Request : Swift.Hashable {
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
 }
-extension Request : Swift.CustomStringConvertible {
+extension PayWiserOnboardingKYC.Request : Swift.CustomStringConvertible {
   public var description: Swift.String {
     get
   }
 }
-extension Request {
+extension PayWiserOnboardingKYC.Request {
   public func cURLDescription() -> Swift.String
 }
 public protocol RequestDelegate : AnyObject {
@@ -1392,7 +1391,7 @@ public protocol RequestDelegate : AnyObject {
   final public func asInputStream(bufferSize: Swift.Int = 1024) -> Foundation.InputStream?
   @objc deinit
 }
-extension DataStreamRequest.Stream {
+extension PayWiserOnboardingKYC.DataStreamRequest.Stream {
   public var result: Swift.Result<Success, Failure>? {
     get
   }
@@ -1416,7 +1415,7 @@ extension DataStreamRequest.Stream {
     public typealias Element = PayWiserOnboardingKYC.DownloadRequest.Options
     public typealias RawValue = Swift.Int
   }
-  public typealias Destination = (Foundation.URL, Foundation.HTTPURLResponse) -> (destinationURL: Foundation.URL, options: PayWiserOnboardingKYC.DownloadRequest.Options)
+  public typealias Destination = (_ temporaryURL: Foundation.URL, _ response: Foundation.HTTPURLResponse) -> (destinationURL: Foundation.URL, options: PayWiserOnboardingKYC.DownloadRequest.Options)
   public class func suggestedDownloadDestination(for directory: Foundation.FileManager.SearchPathDirectory = .documentDirectory, in domain: Foundation.FileManager.SearchPathDomainMask = .userDomainMask, options: PayWiserOnboardingKYC.DownloadRequest.Options = []) -> PayWiserOnboardingKYC.DownloadRequest.Destination
   public enum Downloadable {
     case request(PayWiserOnboardingKYC.URLRequestConvertible)
@@ -1435,7 +1434,7 @@ extension DataStreamRequest.Stream {
   @discardableResult
   public func cancel(producingResumeData shouldProduceResumeData: Swift.Bool) -> Self
   @discardableResult
-  public func cancel(byProducingResumeData completionHandler: @escaping (Foundation.Data?) -> Swift.Void) -> Self
+  public func cancel(byProducingResumeData completionHandler: @escaping (_ data: Foundation.Data?) -> Swift.Void) -> Self
   @discardableResult
   public func validate(_ validation: @escaping PayWiserOnboardingKYC.DownloadRequest.Validation) -> Self
   @objc deinit
@@ -1455,7 +1454,7 @@ extension DataStreamRequest.Stream {
 public protocol UploadableConvertible {
   func createUploadable() throws -> PayWiserOnboardingKYC.UploadRequest.Uploadable
 }
-extension UploadRequest.Uploadable : PayWiserOnboardingKYC.UploadableConvertible {
+extension PayWiserOnboardingKYC.UploadRequest.Uploadable : PayWiserOnboardingKYC.UploadableConvertible {
   public func createUploadable() throws -> PayWiserOnboardingKYC.UploadRequest.Uploadable
 }
 public protocol UploadConvertible : PayWiserOnboardingKYC.URLRequestConvertible, PayWiserOnboardingKYC.UploadableConvertible {
@@ -1471,11 +1470,11 @@ public struct DataResponsePublisher<Value> : Combine.Publisher {
   public func receive<S>(subscriber: S) where S : Combine.Subscriber, S.Failure == PayWiserOnboardingKYC.DataResponsePublisher<Value>.Failure, S.Input == PayWiserOnboardingKYC.DataResponsePublisher<Value>.Output
 }
 @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
-extension DataResponsePublisher where Value == Foundation.Data? {
+extension PayWiserOnboardingKYC.DataResponsePublisher where Value == Foundation.Data? {
   @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
   public init(_ request: PayWiserOnboardingKYC.DataRequest, queue: Dispatch.DispatchQueue)
 }
-extension DataRequest {
+extension PayWiserOnboardingKYC.DataRequest {
   @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
   public func publishResponse<Serializer, T>(using serializer: Serializer, on queue: Dispatch.DispatchQueue = .main) -> PayWiserOnboardingKYC.DataResponsePublisher<T> where Serializer : PayWiserOnboardingKYC.ResponseSerializer, T == Serializer.SerializedObject
   @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
@@ -1496,7 +1495,7 @@ public struct DataStreamPublisher<Value> : Combine.Publisher {
   public func value() -> Combine.AnyPublisher<Value, PayWiserOnboardingKYC.AFError>
   public func receive<S>(subscriber: S) where S : Combine.Subscriber, S.Failure == PayWiserOnboardingKYC.DataStreamPublisher<Value>.Failure, S.Input == PayWiserOnboardingKYC.DataStreamPublisher<Value>.Output
 }
-extension DataStreamRequest {
+extension PayWiserOnboardingKYC.DataStreamRequest {
   @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
   final public func publishStream<Serializer>(using serializer: Serializer, on queue: Dispatch.DispatchQueue = .main) -> PayWiserOnboardingKYC.DataStreamPublisher<Serializer.SerializedObject> where Serializer : PayWiserOnboardingKYC.DataStreamSerializer
   @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
@@ -1517,7 +1516,7 @@ public struct DownloadResponsePublisher<Value> : Combine.Publisher {
   public func value() -> Combine.AnyPublisher<Value, PayWiserOnboardingKYC.AFError>
   public func receive<S>(subscriber: S) where S : Combine.Subscriber, S.Failure == PayWiserOnboardingKYC.DownloadResponsePublisher<Value>.Failure, S.Input == PayWiserOnboardingKYC.DownloadResponsePublisher<Value>.Output
 }
-extension DownloadRequest {
+extension PayWiserOnboardingKYC.DownloadRequest {
   @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
   public func publishResponse<Serializer, T>(using serializer: Serializer, on queue: Dispatch.DispatchQueue = .main) -> PayWiserOnboardingKYC.DownloadResponsePublisher<T> where Serializer : PayWiserOnboardingKYC.ResponseSerializer, T == Serializer.SerializedObject
   @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
@@ -1530,11 +1529,11 @@ extension DownloadRequest {
   public func publishDecodable<T>(type: T.Type = T.self, queue: Dispatch.DispatchQueue = .main, preprocessor: PayWiserOnboardingKYC.DataPreprocessor = DecodableResponseSerializer<T>.defaultDataPreprocessor, decoder: PayWiserOnboardingKYC.DataDecoder = JSONDecoder(), emptyResponseCodes: Swift.Set<Swift.Int> = DecodableResponseSerializer<T>.defaultEmptyResponseCodes, emptyResponseMethods: Swift.Set<PayWiserOnboardingKYC.HTTPMethod> = DecodableResponseSerializer<T>.defaultEmptyRequestMethods) -> PayWiserOnboardingKYC.DownloadResponsePublisher<T> where T : Swift.Decodable
 }
 @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
-extension DownloadResponsePublisher where Value == Foundation.URL? {
+extension PayWiserOnboardingKYC.DownloadResponsePublisher where Value == Foundation.URL? {
   @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
   public init(_ request: PayWiserOnboardingKYC.DownloadRequest, queue: Dispatch.DispatchQueue)
 }
-extension DownloadRequest {
+extension PayWiserOnboardingKYC.DownloadRequest {
   @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
   public func publishUnserialized(on queue: Dispatch.DispatchQueue = .main) -> PayWiserOnboardingKYC.DownloadResponsePublisher<Foundation.URL?>
 }
@@ -1586,7 +1585,7 @@ public enum SwiftyJSONError : Swift.Int, Swift.Error {
     get
   }
 }
-extension SwiftyJSONError : Foundation.CustomNSError {
+extension PayWiserOnboardingKYC.SwiftyJSONError : Foundation.CustomNSError {
   public static var errorDomain: Swift.String {
     get
   }
@@ -1644,7 +1643,7 @@ public enum Index<T> : Swift.Comparable {
 }
 public typealias JSONIndex = PayWiserOnboardingKYC.Index<PayWiserOnboardingKYC.JSON>
 public typealias JSONRawIndex = PayWiserOnboardingKYC.Index<Any>
-extension JSON : Swift.Collection {
+extension PayWiserOnboardingKYC.JSON : Swift.Collection {
   public typealias Index = PayWiserOnboardingKYC.JSONRawIndex
   public var startIndex: PayWiserOnboardingKYC.JSON.Index {
     get
@@ -1668,17 +1667,17 @@ public enum JSONKey {
 public protocol JSONSubscriptType {
   var jsonKey: PayWiserOnboardingKYC.JSONKey { get }
 }
-extension Int : PayWiserOnboardingKYC.JSONSubscriptType {
+extension Swift.Int : PayWiserOnboardingKYC.JSONSubscriptType {
   public var jsonKey: PayWiserOnboardingKYC.JSONKey {
     get
   }
 }
-extension String : PayWiserOnboardingKYC.JSONSubscriptType {
+extension Swift.String : PayWiserOnboardingKYC.JSONSubscriptType {
   public var jsonKey: PayWiserOnboardingKYC.JSONKey {
     get
   }
 }
-extension JSON {
+extension PayWiserOnboardingKYC.JSON {
   public subscript(path: [PayWiserOnboardingKYC.JSONSubscriptType]) -> PayWiserOnboardingKYC.JSON {
     get
     set(newValue)
@@ -1688,7 +1687,7 @@ extension JSON {
     set(newValue)
   }
 }
-extension JSON : Swift.ExpressibleByStringLiteral {
+extension PayWiserOnboardingKYC.JSON : Swift.ExpressibleByStringLiteral {
   public init(stringLiteral value: Swift.StringLiteralType)
   public init(extendedGraphemeClusterLiteral value: Swift.StringLiteralType)
   public init(unicodeScalarLiteral value: Swift.StringLiteralType)
@@ -1696,28 +1695,28 @@ extension JSON : Swift.ExpressibleByStringLiteral {
   public typealias StringLiteralType = Swift.StringLiteralType
   public typealias UnicodeScalarLiteralType = Swift.StringLiteralType
 }
-extension JSON : Swift.ExpressibleByIntegerLiteral {
+extension PayWiserOnboardingKYC.JSON : Swift.ExpressibleByIntegerLiteral {
   public init(integerLiteral value: Swift.IntegerLiteralType)
   public typealias IntegerLiteralType = Swift.IntegerLiteralType
 }
-extension JSON : Swift.ExpressibleByBooleanLiteral {
+extension PayWiserOnboardingKYC.JSON : Swift.ExpressibleByBooleanLiteral {
   public init(booleanLiteral value: Swift.BooleanLiteralType)
   public typealias BooleanLiteralType = Swift.BooleanLiteralType
 }
-extension JSON : Swift.ExpressibleByFloatLiteral {
+extension PayWiserOnboardingKYC.JSON : Swift.ExpressibleByFloatLiteral {
   public init(floatLiteral value: Swift.FloatLiteralType)
   public typealias FloatLiteralType = Swift.FloatLiteralType
 }
-extension JSON : Swift.ExpressibleByDictionaryLiteral {
+extension PayWiserOnboardingKYC.JSON : Swift.ExpressibleByDictionaryLiteral {
   public init(dictionaryLiteral elements: (Swift.String, Any)...)
   public typealias Key = Swift.String
   public typealias Value = Any
 }
-extension JSON : Swift.ExpressibleByArrayLiteral {
+extension PayWiserOnboardingKYC.JSON : Swift.ExpressibleByArrayLiteral {
   public init(arrayLiteral elements: Any...)
   public typealias ArrayLiteralElement = Any
 }
-extension JSON : Swift.RawRepresentable {
+extension PayWiserOnboardingKYC.JSON : Swift.RawRepresentable {
   public init?(rawValue: Any)
   public var rawValue: Any {
     get
@@ -1727,7 +1726,7 @@ extension JSON : Swift.RawRepresentable {
   public func rawString(_ options: [PayWiserOnboardingKYC.writingOptionsKeys : Any]) -> Swift.String?
   public typealias RawValue = Any
 }
-extension JSON : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
+extension PayWiserOnboardingKYC.JSON : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
   public var description: Swift.String {
     get
   }
@@ -1735,7 +1734,7 @@ extension JSON : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertib
     get
   }
 }
-extension JSON {
+extension PayWiserOnboardingKYC.JSON {
   public var array: [PayWiserOnboardingKYC.JSON]? {
     get
   }
@@ -1747,7 +1746,7 @@ extension JSON {
     set(newValue)
   }
 }
-extension JSON {
+extension PayWiserOnboardingKYC.JSON {
   public var dictionary: [Swift.String : PayWiserOnboardingKYC.JSON]? {
     get
   }
@@ -1759,7 +1758,7 @@ extension JSON {
     set(newValue)
   }
 }
-extension JSON {
+extension PayWiserOnboardingKYC.JSON {
   public var bool: Swift.Bool? {
     get
     set(newValue)
@@ -1769,7 +1768,7 @@ extension JSON {
     set(newValue)
   }
 }
-extension JSON {
+extension PayWiserOnboardingKYC.JSON {
   public var string: Swift.String? {
     get
     set(newValue)
@@ -1779,7 +1778,7 @@ extension JSON {
     set(newValue)
   }
 }
-extension JSON {
+extension PayWiserOnboardingKYC.JSON {
   public var number: Foundation.NSNumber? {
     get
     set(newValue)
@@ -1789,20 +1788,20 @@ extension JSON {
     set(newValue)
   }
 }
-extension JSON {
+extension PayWiserOnboardingKYC.JSON {
   public var null: Foundation.NSNull? {
     get
     set(newValue)
   }
   public func exists() -> Swift.Bool
 }
-extension JSON {
+extension PayWiserOnboardingKYC.JSON {
   public var url: Foundation.URL? {
     get
     set(newValue)
   }
 }
-extension JSON {
+extension PayWiserOnboardingKYC.JSON {
   public var double: Swift.Double? {
     get
     set(newValue)
@@ -1900,7 +1899,7 @@ extension JSON {
     set(newValue)
   }
 }
-extension JSON : Swift.Comparable {
+extension PayWiserOnboardingKYC.JSON : Swift.Comparable {
 }
 public func == (lhs: PayWiserOnboardingKYC.JSON, rhs: PayWiserOnboardingKYC.JSON) -> Swift.Bool
 public func <= (lhs: PayWiserOnboardingKYC.JSON, rhs: PayWiserOnboardingKYC.JSON) -> Swift.Bool
@@ -1918,7 +1917,7 @@ public enum writingOptionsKeys {
     get
   }
 }
-extension JSON : Swift.Codable {
+extension PayWiserOnboardingKYC.JSON : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
@@ -1953,7 +1952,7 @@ public struct DataResponse<Success, Failure> where Failure : Swift.Error {
   }
   public init(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, metrics: Foundation.URLSessionTaskMetrics?, serializationDuration: Foundation.TimeInterval, result: Swift.Result<Success, Failure>)
 }
-extension DataResponse : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
+extension PayWiserOnboardingKYC.DataResponse : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
   public var description: Swift.String {
     get
   }
@@ -1961,7 +1960,7 @@ extension DataResponse : Swift.CustomStringConvertible, Swift.CustomDebugStringC
     get
   }
 }
-extension DataResponse {
+extension PayWiserOnboardingKYC.DataResponse {
   public func map<NewSuccess>(_ transform: (Success) -> NewSuccess) -> PayWiserOnboardingKYC.DataResponse<NewSuccess, Failure>
   public func tryMap<NewSuccess>(_ transform: (Success) throws -> NewSuccess) -> PayWiserOnboardingKYC.DataResponse<NewSuccess, Swift.Error>
   public func mapError<NewFailure>(_ transform: (Failure) -> NewFailure) -> PayWiserOnboardingKYC.DataResponse<Success, NewFailure> where NewFailure : Swift.Error
@@ -1983,7 +1982,7 @@ public struct DownloadResponse<Success, Failure> where Failure : Swift.Error {
   }
   public init(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, fileURL: Foundation.URL?, resumeData: Foundation.Data?, metrics: Foundation.URLSessionTaskMetrics?, serializationDuration: Foundation.TimeInterval, result: Swift.Result<Success, Failure>)
 }
-extension DownloadResponse : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
+extension PayWiserOnboardingKYC.DownloadResponse : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
   public var description: Swift.String {
     get
   }
@@ -1991,14 +1990,14 @@ extension DownloadResponse : Swift.CustomStringConvertible, Swift.CustomDebugStr
     get
   }
 }
-extension DownloadResponse {
+extension PayWiserOnboardingKYC.DownloadResponse {
   public func map<NewSuccess>(_ transform: (Success) -> NewSuccess) -> PayWiserOnboardingKYC.DownloadResponse<NewSuccess, Failure>
   public func tryMap<NewSuccess>(_ transform: (Success) throws -> NewSuccess) -> PayWiserOnboardingKYC.DownloadResponse<NewSuccess, Swift.Error>
   public func mapError<NewFailure>(_ transform: (Failure) -> NewFailure) -> PayWiserOnboardingKYC.DownloadResponse<Success, NewFailure> where NewFailure : Swift.Error
   public func tryMapError<NewFailure>(_ transform: (Failure) throws -> NewFailure) -> PayWiserOnboardingKYC.DownloadResponse<Success, Swift.Error> where NewFailure : Swift.Error
 }
 public var AF: PayWiserOnboardingKYC.Session
-extension PhoneNumber {
+extension PayWiserOnboardingKYC.PhoneNumber {
   public func adjustedNationalNumber() -> Swift.String
 }
 public protocol CountryPickerViewDelegate : AnyObject {
@@ -2025,7 +2024,7 @@ public protocol CountryPickerViewDataSource : AnyObject {
   func localeForCountryNameInList(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> Foundation.Locale
   func excludedCountries(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> [PayWiserOnboardingKYC.Country]
 }
-extension CountryPickerViewDataSource {
+extension PayWiserOnboardingKYC.CountryPickerViewDataSource {
   public func preferredCountries(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> [PayWiserOnboardingKYC.Country]
   public func sectionTitleForPreferredCountries(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> Swift.String?
   public func showOnlyPreferredSection(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> Swift.Bool
@@ -2044,7 +2043,7 @@ extension CountryPickerViewDataSource {
   public func localeForCountryNameInList(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> Foundation.Locale
   public func excludedCountries(in countryPickerView: PayWiserOnboardingKYC.CountryPickerView) -> [PayWiserOnboardingKYC.Country]
 }
-extension CountryPickerViewDelegate {
+extension PayWiserOnboardingKYC.CountryPickerViewDelegate {
   public func countryPickerView(_ countryPickerView: PayWiserOnboardingKYC.CountryPickerView, willShow viewController: PayWiserOnboardingKYC.CountryPickerViewController)
   public func countryPickerView(_ countryPickerView: PayWiserOnboardingKYC.CountryPickerView, didShow viewController: PayWiserOnboardingKYC.CountryPickerViewController)
 }
@@ -2095,7 +2094,7 @@ public protocol EventMonitor {
   func request(_ request: PayWiserOnboardingKYC.DownloadRequest, didParseResponse response: PayWiserOnboardingKYC.DownloadResponse<Foundation.URL?, PayWiserOnboardingKYC.AFError>)
   func request<Value>(_ request: PayWiserOnboardingKYC.DownloadRequest, didParseResponse response: PayWiserOnboardingKYC.DownloadResponse<Value, PayWiserOnboardingKYC.AFError>)
 }
-extension EventMonitor {
+extension PayWiserOnboardingKYC.EventMonitor {
   public var queue: Dispatch.DispatchQueue {
     get
   }
@@ -2365,13 +2364,13 @@ public enum AFError : Swift.Error {
   case sessionTaskFailed(error: Swift.Error)
   case urlRequestValidationFailed(reason: PayWiserOnboardingKYC.AFError.URLRequestValidationFailureReason)
 }
-extension Error {
+extension Swift.Error {
   public var asAFError: PayWiserOnboardingKYC.AFError? {
     get
   }
   public func asAFError(orFailWith message: @autoclosure () -> Swift.String, file: Swift.StaticString = #file, line: Swift.UInt = #line) -> PayWiserOnboardingKYC.AFError
 }
-extension AFError {
+extension PayWiserOnboardingKYC.AFError {
   public var isSessionDeinitializedError: Swift.Bool {
     get
   }
@@ -2421,7 +2420,7 @@ extension AFError {
     get
   }
 }
-extension AFError {
+extension PayWiserOnboardingKYC.AFError {
   public var urlConvertible: PayWiserOnboardingKYC.URLConvertible? {
     get
   }
@@ -2450,7 +2449,7 @@ extension AFError {
     get
   }
 }
-extension AFError : Foundation.LocalizedError {
+extension PayWiserOnboardingKYC.AFError : Foundation.LocalizedError {
   public var errorDescription: Swift.String? {
     get
   }
@@ -2475,10 +2474,9 @@ public typealias MetadataCallback = (() throws -> Foundation.Data?)
   final public func possiblePhoneNumberLengths(forCountry country: Swift.String, phoneNumberType: PayWiserOnboardingKYC.PhoneNumberType, lengthType: PayWiserOnboardingKYC.PossibleLengthType) -> [Swift.Int]
   final public class func defaultRegionCode() -> Swift.String
   public static func defaultMetadataCallback() throws -> Foundation.Data?
-  @objc override dynamic public init()
   @objc deinit
 }
-extension PhoneNumberKit {
+extension PayWiserOnboardingKYC.PhoneNumberKit {
   public enum CountryCodePicker {
     public static var commonCountryCodes: [Swift.String]
     public static var forceModalPresentation: Swift.Bool
@@ -2487,33 +2485,33 @@ extension PhoneNumberKit {
 public protocol URLConvertible {
   func asURL() throws -> Foundation.URL
 }
-extension String : PayWiserOnboardingKYC.URLConvertible {
+extension Swift.String : PayWiserOnboardingKYC.URLConvertible {
   public func asURL() throws -> Foundation.URL
 }
-extension URL : PayWiserOnboardingKYC.URLConvertible {
+extension Foundation.URL : PayWiserOnboardingKYC.URLConvertible {
   public func asURL() throws -> Foundation.URL
 }
-extension URLComponents : PayWiserOnboardingKYC.URLConvertible {
+extension Foundation.URLComponents : PayWiserOnboardingKYC.URLConvertible {
   public func asURL() throws -> Foundation.URL
 }
 public protocol URLRequestConvertible {
   func asURLRequest() throws -> Foundation.URLRequest
 }
-extension URLRequestConvertible {
+extension PayWiserOnboardingKYC.URLRequestConvertible {
   public var urlRequest: Foundation.URLRequest? {
     get
   }
 }
-extension URLRequest : PayWiserOnboardingKYC.URLRequestConvertible {
+extension Foundation.URLRequest : PayWiserOnboardingKYC.URLRequestConvertible {
   public func asURLRequest() throws -> Foundation.URLRequest
 }
-extension URLRequest {
+extension Foundation.URLRequest {
   public init(url: PayWiserOnboardingKYC.URLConvertible, method: PayWiserOnboardingKYC.HTTPMethod, headers: PayWiserOnboardingKYC.HTTPHeaders? = nil) throws
 }
-extension Request {
+extension PayWiserOnboardingKYC.Request {
   public typealias ValidationResult = Swift.Result<Swift.Void, Swift.Error>
 }
-extension DataRequest {
+extension PayWiserOnboardingKYC.DataRequest {
   public typealias Validation = (Foundation.URLRequest?, Foundation.HTTPURLResponse, Foundation.Data?) -> PayWiserOnboardingKYC.DataRequest.ValidationResult
   @discardableResult
   public func validate<S>(statusCode acceptableStatusCodes: S) -> Self where S : Swift.Sequence, S.Element == Swift.Int
@@ -2522,8 +2520,8 @@ extension DataRequest {
   @discardableResult
   public func validate() -> Self
 }
-extension DataStreamRequest {
-  public typealias Validation = (Foundation.URLRequest?, Foundation.HTTPURLResponse) -> PayWiserOnboardingKYC.DataStreamRequest.ValidationResult
+extension PayWiserOnboardingKYC.DataStreamRequest {
+  public typealias Validation = (_ request: Foundation.URLRequest?, _ response: Foundation.HTTPURLResponse) -> PayWiserOnboardingKYC.DataStreamRequest.ValidationResult
   @discardableResult
   final public func validate<S>(statusCode acceptableStatusCodes: S) -> Self where S : Swift.Sequence, S.Element == Swift.Int
   @discardableResult
@@ -2531,8 +2529,8 @@ extension DataStreamRequest {
   @discardableResult
   final public func validate() -> Self
 }
-extension DownloadRequest {
-  public typealias Validation = (Foundation.URLRequest?, Foundation.HTTPURLResponse, Foundation.URL?) -> PayWiserOnboardingKYC.DownloadRequest.ValidationResult
+extension PayWiserOnboardingKYC.DownloadRequest {
+  public typealias Validation = (_ request: Foundation.URLRequest?, _ response: Foundation.HTTPURLResponse, _ fileURL: Foundation.URL?) -> PayWiserOnboardingKYC.DownloadRequest.ValidationResult
   @discardableResult
   public func validate<S>(statusCode acceptableStatusCodes: S) -> Self where S : Swift.Sequence, S.Element == Swift.Int
   @discardableResult
@@ -2540,7 +2538,7 @@ extension DownloadRequest {
   @discardableResult
   public func validate() -> Self
 }
-extension Request {
+extension PayWiserOnboardingKYC.Request {
   public static var didResumeNotification: Foundation.Notification.Name
   public static var didSuspendNotification: Foundation.Notification.Name
   public static var didCancelNotification: Foundation.Notification.Name
@@ -2550,7 +2548,7 @@ extension Request {
   public static var didCancelTaskNotification: Foundation.Notification.Name
   public static var didCompleteTaskNotification: Foundation.Notification.Name
 }
-extension Notification {
+extension Foundation.Notification {
   public var request: PayWiserOnboardingKYC.Request? {
     get
   }
@@ -2566,102 +2564,101 @@ extension Notification {
   final public func request(_ request: PayWiserOnboardingKYC.Request, didCompleteTask task: Foundation.URLSessionTask, with error: PayWiserOnboardingKYC.AFError?)
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers open class PhoneNumberTextField : UIKit.UITextField, UIKit.UITextFieldDelegate {
-  final public let phoneNumberKit: PayWiserOnboardingKYC.PhoneNumberKit
-  public var flagButton: UIKit.UIButton {
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class PhoneNumberTextField : UIKit.UITextField, UIKit.UITextFieldDelegate {
+  @_Concurrency.MainActor(unsafe) final public let phoneNumberKit: PayWiserOnboardingKYC.PhoneNumberKit
+  @_Concurrency.MainActor(unsafe) public var flagButton: UIKit.UIButton {
     get
     set(value)
   }
-  @objc override dynamic open var text: Swift.String? {
-    @objc get
-    @objc set(newValue)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var text: Swift.String? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set(newValue)
   }
-  open func setTextUnformatted(newValue: Swift.String?)
-  open var defaultRegion: Swift.String {
+  @_Concurrency.MainActor(unsafe) open func setTextUnformatted(newValue: Swift.String?)
+  @_Concurrency.MainActor(unsafe) open var defaultRegion: Swift.String {
     get
     @available(*, deprecated, message: "    The setter of defaultRegion is deprecated,\n    please override defaultRegion in a subclass instead.")
     set(newValue)
   }
-  public var withPrefix: Swift.Bool {
+  @_Concurrency.MainActor(unsafe) public var withPrefix: Swift.Bool {
     get
     set(value)
   }
-  public var withFlag: Swift.Bool {
+  @_Concurrency.MainActor(unsafe) public var withFlag: Swift.Bool {
     get
     set(value)
   }
-  public var withExamplePlaceholder: Swift.Bool {
+  @_Concurrency.MainActor(unsafe) public var withExamplePlaceholder: Swift.Bool {
     get
     set(value)
   }
-  public var countryCodePlaceholderColor: UIKit.UIColor {
+  @_Concurrency.MainActor(unsafe) public var countryCodePlaceholderColor: UIKit.UIColor {
     get
     set(value)
   }
-  public var numberPlaceholderColor: UIKit.UIColor {
+  @_Concurrency.MainActor(unsafe) public var numberPlaceholderColor: UIKit.UIColor {
     get
     set(value)
   }
   @available(iOS 11.0, *)
-  public var withDefaultPickerUI: Swift.Bool {
+  @_Concurrency.MainActor(unsafe) public var withDefaultPickerUI: Swift.Bool {
     get
     set(newValue)
   }
-  public var isPartialFormatterEnabled: Swift.Bool
-  public var maxDigits: Swift.Int? {
+  @_Concurrency.MainActor(unsafe) public var isPartialFormatterEnabled: Swift.Bool
+  @_Concurrency.MainActor(unsafe) public var maxDigits: Swift.Int? {
     get
     set(value)
   }
-  public var partialFormatter: PayWiserOnboardingKYC.PartialFormatter {
+  @_Concurrency.MainActor(unsafe) public var partialFormatter: PayWiserOnboardingKYC.PartialFormatter {
     get
   }
-  @objc override dynamic open var delegate: UIKit.UITextFieldDelegate? {
-    @objc get
-    @objc set(newValue)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var delegate: UIKit.UITextFieldDelegate? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set(newValue)
   }
-  public var currentRegion: Swift.String {
+  @_Concurrency.MainActor(unsafe) public var currentRegion: Swift.String {
     get
   }
-  public var nationalNumber: Swift.String {
+  @_Concurrency.MainActor(unsafe) public var nationalNumber: Swift.String {
     get
   }
-  public var isValidNumber: Swift.Bool {
+  @_Concurrency.MainActor(unsafe) public var isValidNumber: Swift.Bool {
     get
   }
-  public var phoneNumber: PayWiserOnboardingKYC.PhoneNumber? {
+  @_Concurrency.MainActor(unsafe) public var phoneNumber: PayWiserOnboardingKYC.PhoneNumber? {
     get
   }
-  @objc override dynamic open func layoutSubviews()
-  public convenience init(withPhoneNumberKit phoneNumberKit: PayWiserOnboardingKYC.PhoneNumberKit)
-  public init(frame: CoreGraphics.CGRect, phoneNumberKit: PayWiserOnboardingKYC.PhoneNumberKit)
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init(coder aDecoder: Foundation.NSCoder)
-  open func updateFlag()
-  open func updatePlaceholder()
-  @objc open func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
-  @objc open func textFieldShouldBeginEditing(_ textField: UIKit.UITextField) -> Swift.Bool
-  @objc open func textFieldDidBeginEditing(_ textField: UIKit.UITextField)
-  @objc open func textFieldShouldEndEditing(_ textField: UIKit.UITextField) -> Swift.Bool
-  @objc open func textFieldDidEndEditing(_ textField: UIKit.UITextField)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) public convenience init(withPhoneNumberKit phoneNumberKit: PayWiserOnboardingKYC.PhoneNumberKit)
+  @_Concurrency.MainActor(unsafe) public init(frame: CoreGraphics.CGRect, phoneNumberKit: PayWiserOnboardingKYC.PhoneNumberKit)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) open func updateFlag()
+  @_Concurrency.MainActor(unsafe) open func updatePlaceholder()
+  @_Concurrency.MainActor(unsafe) @objc open func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc open func textFieldShouldBeginEditing(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc open func textFieldDidBeginEditing(_ textField: UIKit.UITextField)
+  @_Concurrency.MainActor(unsafe) @objc open func textFieldShouldEndEditing(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc open func textFieldDidEndEditing(_ textField: UIKit.UITextField)
   @available(iOS 10.0, tvOS 10.0, *)
-  @objc open func textFieldDidEndEditing(_ textField: UIKit.UITextField, reason: UIKit.UITextField.DidEndEditingReason)
-  @objc open func textFieldShouldClear(_ textField: UIKit.UITextField) -> Swift.Bool
-  @objc open func textFieldShouldReturn(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc open func textFieldDidEndEditing(_ textField: UIKit.UITextField, reason: UIKit.UITextField.DidEndEditingReason)
+  @_Concurrency.MainActor(unsafe) @objc open func textFieldShouldClear(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc open func textFieldShouldReturn(_ textField: UIKit.UITextField) -> Swift.Bool
   @objc deinit
 }
 @available(iOS 11.0, *)
-extension PhoneNumberTextField : PayWiserOnboardingKYC.CountryCodePickerDelegate {
-  public func countryCodePickerViewControllerDidPickCountry(_ country: PayWiserOnboardingKYC.CountryCodePickerViewController.Country)
+extension PayWiserOnboardingKYC.PhoneNumberTextField : PayWiserOnboardingKYC.CountryCodePickerDelegate {
+  @_Concurrency.MainActor(unsafe) public func countryCodePickerViewControllerDidPickCountry(_ country: PayWiserOnboardingKYC.CountryCodePickerViewController.Country)
 }
 @objc open class SessionDelegate : ObjectiveC.NSObject {
   public init(fileManager: Foundation.FileManager = .default)
-  @objc override dynamic public init()
   @objc deinit
 }
-extension SessionDelegate : Foundation.URLSessionDelegate {
+extension PayWiserOnboardingKYC.SessionDelegate : Foundation.URLSessionDelegate {
   @objc dynamic open func urlSession(_ session: Foundation.URLSession, didBecomeInvalidWithError error: Swift.Error?)
 }
-extension SessionDelegate : Foundation.URLSessionTaskDelegate {
+extension PayWiserOnboardingKYC.SessionDelegate : Foundation.URLSessionTaskDelegate {
   @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didReceive challenge: Foundation.URLAuthenticationChallenge, completionHandler: @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void)
   @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didSendBodyData bytesSent: Swift.Int64, totalBytesSent: Swift.Int64, totalBytesExpectedToSend: Swift.Int64)
   @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, needNewBodyStream completionHandler: @escaping (Foundation.InputStream?) -> Swift.Void)
@@ -2671,11 +2668,11 @@ extension SessionDelegate : Foundation.URLSessionTaskDelegate {
   @available(macOS 10.13, iOS 11.0, tvOS 11.0, watchOS 4.0, *)
   @objc dynamic open func urlSession(_ session: Foundation.URLSession, taskIsWaitingForConnectivity task: Foundation.URLSessionTask)
 }
-extension SessionDelegate : Foundation.URLSessionDataDelegate {
+extension PayWiserOnboardingKYC.SessionDelegate : Foundation.URLSessionDataDelegate {
   @objc dynamic open func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, didReceive data: Foundation.Data)
   @objc dynamic open func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, willCacheResponse proposedResponse: Foundation.CachedURLResponse, completionHandler: @escaping (Foundation.CachedURLResponse?) -> Swift.Void)
 }
-extension SessionDelegate : Foundation.URLSessionDownloadDelegate {
+extension PayWiserOnboardingKYC.SessionDelegate : Foundation.URLSessionDownloadDelegate {
   @objc dynamic open func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didResumeAtOffset fileOffset: Swift.Int64, expectedTotalBytes: Swift.Int64)
   @objc dynamic open func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didWriteData bytesWritten: Swift.Int64, totalBytesWritten: Swift.Int64, totalBytesExpectedToWrite: Swift.Int64)
   @objc dynamic open func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didFinishDownloadingTo location: Foundation.URL)
@@ -2720,7 +2717,7 @@ open class Session {
   open func upload(multipartFormData: PayWiserOnboardingKYC.MultipartFormData, to url: PayWiserOnboardingKYC.URLConvertible, usingThreshold encodingMemoryThreshold: Swift.UInt64 = MultipartFormData.encodingMemoryThreshold, method: PayWiserOnboardingKYC.HTTPMethod = .post, headers: PayWiserOnboardingKYC.HTTPHeaders? = nil, interceptor: PayWiserOnboardingKYC.RequestInterceptor? = nil, fileManager: Foundation.FileManager = .default, requestModifier: PayWiserOnboardingKYC.Session.RequestModifier? = nil) -> PayWiserOnboardingKYC.UploadRequest
   open func upload(multipartFormData: PayWiserOnboardingKYC.MultipartFormData, with request: PayWiserOnboardingKYC.URLRequestConvertible, usingThreshold encodingMemoryThreshold: Swift.UInt64 = MultipartFormData.encodingMemoryThreshold, interceptor: PayWiserOnboardingKYC.RequestInterceptor? = nil, fileManager: Foundation.FileManager = .default) -> PayWiserOnboardingKYC.UploadRequest
 }
-extension Session : PayWiserOnboardingKYC.RequestDelegate {
+extension PayWiserOnboardingKYC.Session : PayWiserOnboardingKYC.RequestDelegate {
   public var sessionConfiguration: Foundation.URLSessionConfiguration {
     get
   }
@@ -2736,28 +2733,26 @@ public protocol CountryCodePickerDelegate : AnyObject {
   func countryCodePickerViewControllerDidPickCountry(_ country: PayWiserOnboardingKYC.CountryCodePickerViewController.Country)
 }
 @objc @_hasMissingDesignatedInitializers @available(iOS 11.0, *)
-public class CountryCodePickerViewController : UIKit.UITableViewController {
-  final public let phoneNumberKit: PayWiserOnboardingKYC.PhoneNumberKit
-  weak public var delegate: PayWiserOnboardingKYC.CountryCodePickerDelegate?
-  public init(phoneNumberKit: PayWiserOnboardingKYC.PhoneNumberKit, commonCountryCodes: [Swift.String] = PhoneNumberKit.CountryCodePicker.commonCountryCodes)
-  @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
-  @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
-  @objc override dynamic public func numberOfSections(in tableView: UIKit.UITableView) -> Swift.Int
-  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
-  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
-  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, titleForHeaderInSection section: Swift.Int) -> Swift.String?
-  @objc override dynamic public func sectionIndexTitles(for tableView: UIKit.UITableView) -> [Swift.String]?
-  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
-  @objc override dynamic public init(style: UIKit.UITableView.Style)
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+@_Concurrency.MainActor(unsafe) public class CountryCodePickerViewController : UIKit.UITableViewController {
+  @_Concurrency.MainActor(unsafe) final public let phoneNumberKit: PayWiserOnboardingKYC.PhoneNumberKit
+  @_Concurrency.MainActor(unsafe) weak public var delegate: PayWiserOnboardingKYC.CountryCodePickerDelegate?
+  @_Concurrency.MainActor(unsafe) public init(phoneNumberKit: PayWiserOnboardingKYC.PhoneNumberKit, commonCountryCodes: [Swift.String] = PhoneNumberKit.CountryCodePicker.commonCountryCodes)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func numberOfSections(in tableView: UIKit.UITableView) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, titleForHeaderInSection section: Swift.Int) -> Swift.String?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func sectionIndexTitles(for tableView: UIKit.UITableView) -> [Swift.String]?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
   @objc deinit
 }
 @available(iOS 11.0, *)
-extension CountryCodePickerViewController : UIKit.UISearchResultsUpdating {
-  @objc dynamic public func updateSearchResults(for searchController: UIKit.UISearchController)
+extension PayWiserOnboardingKYC.CountryCodePickerViewController : UIKit.UISearchResultsUpdating {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func updateSearchResults(for searchController: UIKit.UISearchController)
 }
 @available(iOS 11.0, *)
-extension CountryCodePickerViewController {
+extension PayWiserOnboardingKYC.CountryCodePickerViewController {
   public struct Country {
     public var code: Swift.String
     public var flag: Swift.String
@@ -2765,7 +2760,7 @@ extension CountryCodePickerViewController {
     public var prefix: Swift.String
     public init?(for countryCode: Swift.String, with phoneNumberKit: PayWiserOnboardingKYC.PhoneNumberKit)
   }
-  @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class Cell : UIKit.UITableViewCell {
+  @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class Cell : UIKit.UITableViewCell {
     @objc deinit
   }
 }
