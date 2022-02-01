@@ -5,6 +5,7 @@ import Combine
 import CoreTelephony
 import Dispatch
 import Foundation
+import IdensicMobileSDK
 import MobileCoreServices
 @_exported import PayWiserOnboardingKYC
 import Swift
