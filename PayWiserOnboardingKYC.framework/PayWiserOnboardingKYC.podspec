@@ -26,7 +26,6 @@ Pod::Spec.new do |s|
   
   s.frameworks = 'UIKit'
   s.dependency 'VideoID', '7.1.21'
-  s.dependency 'IdensicMobileSDK', '1.18.4'
   
   s.pod_target_xcconfig = {
       'ENABLE_BITCODE' => 'No',

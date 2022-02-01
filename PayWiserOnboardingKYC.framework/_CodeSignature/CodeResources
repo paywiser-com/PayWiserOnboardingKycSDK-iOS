@@ -1124,6 +1124,22 @@
 		<data>
 		iT3aztgE5AHkhzu2gA9Y4hghdQY=
 		</data>
+		<key>Frameworks/IdensicMobileSDK.framework/Assets.car</key>
+		<data>
+		Fp10PBGTozp+LJGrrgJS+C7EgFI=
+		</data>
+		<key>Frameworks/IdensicMobileSDK.framework/IdensicMobileSDK</key>
+		<data>
+		BIN+7F2U0vnDXanxdliqeVZDqeU=
+		</data>
+		<key>Frameworks/IdensicMobileSDK.framework/Info.plist</key>
+		<data>
+		u9LBlOFhSbabwepcv6XveeErSSg=
+		</data>
+		<key>Frameworks/IdensicMobileSDK.framework/_CodeSignature/CodeResources</key>
+		<data>
+		SH6/pHiypiav+uJbgkYAreDh1v0=
+		</data>
 		<key>Headers/PayWiserOnboardingKYC-Swift.h</key>
 		<data>
 		Yys1J1C6Xyzg7bh1j0m3oEst5O0=
@@ -1162,11 +1178,11 @@
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		p3KI6/t5EaDbDYxypYOL3L2FMMI=
+		v22laodeAfxOrgwF7jLlrSdVyEQ=
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<data>
-		p3KI6/t5EaDbDYxypYOL3L2FMMI=
+		v22laodeAfxOrgwF7jLlrSdVyEQ=
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -1178,7 +1194,7 @@
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		lsUjVwM1ENsRxg2aD6Fmyj0Akxo=
+		SgUA8Z/sJWJd5HYDuBhL7HvH9Rg=
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -1190,7 +1206,7 @@
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		lsUjVwM1ENsRxg2aD6Fmyj0Akxo=
+		SgUA8Z/sJWJd5HYDuBhL7HvH9Rg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -1198,7 +1214,7 @@
 		</data>
 		<key>PayWiserOnboardingKYC.podspec</key>
 		<data>
-		p31u8hXCimeIYaUCA4WWjJLtK7w=
+		NueRA78xQaqmEPJhGmStEE0AA08=
 		</data>
 		<key>PersonalInfoViewController.storyboardc/Info.plist</key>
 		<data>
@@ -1246,7 +1262,7 @@
 		</data>
 		<key>Podfile</key>
 		<data>
-		VNpZMEtO42DjqJ6MxBMlBuzlzTg=
+		ffEqb8TyvhgqrbuR6NylfMGvBM0=
 		</data>
 		<key>ReferenceNumberViewController.storyboardc/0tV-kM-cH3-view-DAE-BO-lqb.nib</key>
 		<data>
@@ -3299,6 +3315,34 @@
 			ZMRtq1cytawRG2nC3ZAK8Q3EQ7S9dSZALIrXkY2OzuY=
 			</data>
 		</dict>
+		<key>Frameworks/IdensicMobileSDK.framework/Assets.car</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			G2ZdN3z3MSZFdF0d31jBiyJb6LrH2WiAdBiovq+elhc=
+			</data>
+		</dict>
+		<key>Frameworks/IdensicMobileSDK.framework/IdensicMobileSDK</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			oqvJIz6q4w22tj+7lXuFvCXouiqcMijaf1aMb431Ck4=
+			</data>
+		</dict>
+		<key>Frameworks/IdensicMobileSDK.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			S1uSyR5khmSyZ6zfguBt8akIEfRDtR0YuZVFRI3WLPY=
+			</data>
+		</dict>
+		<key>Frameworks/IdensicMobileSDK.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bGEUyjmZAHpsHqIt2J1S+xqymdr43LCEp9Ge1mEcM6c=
+			</data>
+		</dict>
 		<key>Headers/PayWiserOnboardingKYC-Swift.h</key>
 		<dict>
 			<key>hash2</key>
@@ -3359,14 +3403,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7JUsDLGzvqUGbisgBnL1QZmawBkxHABEdXL/Lbj1aEg=
+			7OtkkUeHUTZbzERhqL5YuZEIiM+75N4hVJf9L5kp3YA=
 			</data>
 		</dict>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7JUsDLGzvqUGbisgBnL1QZmawBkxHABEdXL/Lbj1aEg=
+			7OtkkUeHUTZbzERhqL5YuZEIiM+75N4hVJf9L5kp3YA=
 			</data>
 		</dict>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -3387,7 +3431,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			bdrd2ys22nPeviLYSGWzGz2bo02HWSWLeixkciPA0w0=
+			ZFYOUD5O/relfaoGxHR9+29+AhW0Mwf5sotji4rmICw=
 			</data>
 		</dict>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64.swiftdoc</key>
@@ -3408,7 +3452,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			bdrd2ys22nPeviLYSGWzGz2bo02HWSWLeixkciPA0w0=
+			ZFYOUD5O/relfaoGxHR9+29+AhW0Mwf5sotji4rmICw=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -3422,7 +3466,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			H/JUyBb7Wa+7Tff+xyPTgX5ebUFeuLjLnqsoldfwmkA=
+			5WCgyPrM7uWo4Tu+S0Hn4yzNqgxTQV+dXLjgUl+Ts9o=
 			</data>
 		</dict>
 		<key>PersonalInfoViewController.storyboardc/Info.plist</key>
@@ -3506,7 +3550,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5J9qr96mVXcY2t5UU6IUw5C6Yo8YoioncjRpvhTVbLs=
+			77lzUGDTVUht1lYi237C+SVPH9smwJn9G/BOv8vo/ms=
 			</data>
 		</dict>
 		<key>ReferenceNumberViewController.storyboardc/0tV-kM-cH3-view-DAE-BO-lqb.nib</key>
