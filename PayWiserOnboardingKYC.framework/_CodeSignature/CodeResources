@@ -1124,22 +1124,6 @@
 		<data>
 		iT3aztgE5AHkhzu2gA9Y4hghdQY=
 		</data>
-		<key>Frameworks/IdensicMobileSDK.framework/Assets.car</key>
-		<data>
-		Fp10PBGTozp+LJGrrgJS+C7EgFI=
-		</data>
-		<key>Frameworks/IdensicMobileSDK.framework/IdensicMobileSDK</key>
-		<data>
-		BIN+7F2U0vnDXanxdliqeVZDqeU=
-		</data>
-		<key>Frameworks/IdensicMobileSDK.framework/Info.plist</key>
-		<data>
-		u9LBlOFhSbabwepcv6XveeErSSg=
-		</data>
-		<key>Frameworks/IdensicMobileSDK.framework/_CodeSignature/CodeResources</key>
-		<data>
-		SH6/pHiypiav+uJbgkYAreDh1v0=
-		</data>
 		<key>Headers/PayWiserOnboardingKYC-Swift.h</key>
 		<data>
 		Yys1J1C6Xyzg7bh1j0m3oEst5O0=
@@ -3313,34 +3297,6 @@
 			<key>hash2</key>
 			<data>
 			ZMRtq1cytawRG2nC3ZAK8Q3EQ7S9dSZALIrXkY2OzuY=
-			</data>
-		</dict>
-		<key>Frameworks/IdensicMobileSDK.framework/Assets.car</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			G2ZdN3z3MSZFdF0d31jBiyJb6LrH2WiAdBiovq+elhc=
-			</data>
-		</dict>
-		<key>Frameworks/IdensicMobileSDK.framework/IdensicMobileSDK</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			oqvJIz6q4w22tj+7lXuFvCXouiqcMijaf1aMb431Ck4=
-			</data>
-		</dict>
-		<key>Frameworks/IdensicMobileSDK.framework/Info.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			S1uSyR5khmSyZ6zfguBt8akIEfRDtR0YuZVFRI3WLPY=
-			</data>
-		</dict>
-		<key>Frameworks/IdensicMobileSDK.framework/_CodeSignature/CodeResources</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			bGEUyjmZAHpsHqIt2J1S+xqymdr43LCEp9Ge1mEcM6c=
 			</data>
 		</dict>
 		<key>Headers/PayWiserOnboardingKYC-Swift.h</key>
