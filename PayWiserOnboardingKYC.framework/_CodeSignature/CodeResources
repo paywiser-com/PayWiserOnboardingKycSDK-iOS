@@ -1162,11 +1162,11 @@
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		1SQg6hswEVt3XMTRUcjGuKSG3Dg=
+		J35Y+irctDmlV5d4EGbtf197hvk=
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<data>
-		1SQg6hswEVt3XMTRUcjGuKSG3Dg=
+		J35Y+irctDmlV5d4EGbtf197hvk=
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -1198,7 +1198,7 @@
 		</data>
 		<key>PayWiserOnboardingKYC.podspec</key>
 		<data>
-		/+2GxvkkNlOdc8EkFjqhSgdpceE=
+		t/K7fQnI3fWDMs9I6TCrfSmThJk=
 		</data>
 		<key>PersonalInfoViewController.storyboardc/Info.plist</key>
 		<data>
@@ -1246,7 +1246,7 @@
 		</data>
 		<key>Podfile</key>
 		<data>
-		l7+/zJshlg58G3zzbWYjHSUofZE=
+		h019PGgN4GNInARtBizL6m90WqY=
 		</data>
 		<key>ReferenceNumberViewController.storyboardc/0tV-kM-cH3-view-DAE-BO-lqb.nib</key>
 		<data>
@@ -3355,14 +3355,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			mt2pVoUK5IDPQ9jbG4PwwN41Qfn7PLDkssSqon1IJ2I=
+			Z+ccMmqEn2OJmP8i+k9OWIyBkqQLS30J2AOUTuQtW94=
 			</data>
 		</dict>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mt2pVoUK5IDPQ9jbG4PwwN41Qfn7PLDkssSqon1IJ2I=
+			Z+ccMmqEn2OJmP8i+k9OWIyBkqQLS30J2AOUTuQtW94=
 			</data>
 		</dict>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -3418,7 +3418,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			cUeJCRL8/Gne/gmj8E3OLtTUxkyI1XBCCxuk4xpKvNI=
+			45IG2x8zJapr5cU4R6CLSabAtB625M1CUHx9DMhikNM=
 			</data>
 		</dict>
 		<key>PersonalInfoViewController.storyboardc/Info.plist</key>
@@ -3502,7 +3502,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ypJLsvLRxmOf0ELRMWFgF/dD6v8NlDl9WzkXpTFuB5k=
+			TlB5dIY82r4mkn3rOV8TPKgSs7qDlpj7+G/7SNdMkPA=
 			</data>
 		</dict>
 		<key>ReferenceNumberViewController.storyboardc/0tV-kM-cH3-view-DAE-BO-lqb.nib</key>

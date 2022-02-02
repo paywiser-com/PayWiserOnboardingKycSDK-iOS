@@ -12,5 +12,7 @@ target 'PayWiserOnboardingKYC' do
   
   pod 'VideoID', '7.1.21'
   pod 'IdensicMobileSDK', '1.18.4'
+  pod 'IdensicMobileSDK/Core', '1.18.4'
+  pod 'IdensicMobileSDK/Default', '1.18.4'
 
 end
