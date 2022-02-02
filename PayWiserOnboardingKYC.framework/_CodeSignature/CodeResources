@@ -1130,7 +1130,7 @@
 		</data>
 		<key>Frameworks/IdensicMobileSDK.framework/IdensicMobileSDK</key>
 		<data>
-		Lfbdcio1gbt6HxgmzeYY+hHx57M=
+		/nMCpW74EKKmB6vdzrfkDdMOeMg=
 		</data>
 		<key>Frameworks/IdensicMobileSDK.framework/Info.plist</key>
 		<data>
@@ -1214,7 +1214,7 @@
 		</data>
 		<key>PayWiserOnboardingKYC.podspec</key>
 		<data>
-		OIw471nBTZxim/5lEmzwAyxI4fQ=
+		Dsq5OwkerscS8A01o2DHpM5Dngk=
 		</data>
 		<key>PersonalInfoViewController.storyboardc/Info.plist</key>
 		<data>
@@ -1330,10 +1330,6 @@
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>update.sh</key>
-		<data>
-		+2n/jQaJKVt3sUWkHcvuzfdn/sw=
-		</data>
 		<key>zh-Hans.lproj/Localizable.strings</key>
 		<dict>
 			<key>hash</key>
@@ -3326,7 +3322,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			VtuOmNSCl2PIYyom7v1gxNS2r9q9K+x5JGreVcPdciY=
+			qERWRfHUC4Ts05D44K/tp3vCiqKkBymyQLUr17DDkDg=
 			</data>
 		</dict>
 		<key>Frameworks/IdensicMobileSDK.framework/Info.plist</key>
@@ -3466,7 +3462,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			We5tcXh3ifWwIoiPqHMnOfC99e6asuXiVlCwbX9nrv0=
+			U2rF7mvxf8T09CvJGGOSVTtrkaGIWhsA6SnH+tBYz80=
 			</data>
 		</dict>
 		<key>PersonalInfoViewController.storyboardc/Info.plist</key>
@@ -3654,13 +3650,6 @@
 			</data>
 			<key>optional</key>
 			<true/>
-		</dict>
-		<key>update.sh</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Z2ruOCUBVxxv2fWJZhVP1GW1muNaPRRntQmf94hxIPk=
-			</data>
 		</dict>
 		<key>zh-Hans.lproj/Localizable.strings</key>
 		<dict>
