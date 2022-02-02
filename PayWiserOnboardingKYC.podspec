@@ -26,7 +26,6 @@ Pod::Spec.new do |s|
   
   s.frameworks = 'UIKit'
   s.dependency 'VideoID', '7.1.21'
-  s.dependency 'IdensicMobileSDK', '1.18.4'
   
   s.xcconfig = { 'LIBRARY_SEARCH_PATHS' => '$(PODS_ROOT)/ProjectFolder/LibraryFolder' }
   
