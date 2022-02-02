@@ -1124,6 +1124,22 @@
 		<data>
 		iT3aztgE5AHkhzu2gA9Y4hghdQY=
 		</data>
+		<key>Frameworks/IdensicMobileSDK.framework/Assets.car</key>
+		<data>
+		Fp10PBGTozp+LJGrrgJS+C7EgFI=
+		</data>
+		<key>Frameworks/IdensicMobileSDK.framework/IdensicMobileSDK</key>
+		<data>
+		Lfbdcio1gbt6HxgmzeYY+hHx57M=
+		</data>
+		<key>Frameworks/IdensicMobileSDK.framework/Info.plist</key>
+		<data>
+		u9LBlOFhSbabwepcv6XveeErSSg=
+		</data>
+		<key>Frameworks/IdensicMobileSDK.framework/_CodeSignature/CodeResources</key>
+		<data>
+		SH6/pHiypiav+uJbgkYAreDh1v0=
+		</data>
 		<key>Headers/PayWiserOnboardingKYC-Swift.h</key>
 		<data>
 		Yys1J1C6Xyzg7bh1j0m3oEst5O0=
@@ -1131,66 +1147,6 @@
 		<key>Headers/PayWiserOnboardingKYC.h</key>
 		<data>
 		u4RnBftU2C0c8+6OFuoi/3ZPllo=
-		</data>
-		<key>IdensicMobileSDK.framework/Assets.car</key>
-		<data>
-		Fp10PBGTozp+LJGrrgJS+C7EgFI=
-		</data>
-		<key>IdensicMobileSDK.framework/Headers/IdensicMobileSDK.h</key>
-		<data>
-		G9DPxBBifELTzdwbY7r9+/imFis=
-		</data>
-		<key>IdensicMobileSDK.framework/Headers/SNSActionResult.h</key>
-		<data>
-		8qTMzm+W6C8bSDLDOVXso/aZprU=
-		</data>
-		<key>IdensicMobileSDK.framework/Headers/SNSEvent.h</key>
-		<data>
-		+dzZD/8RFvjIbzRe1QWP6qLkA9Y=
-		</data>
-		<key>IdensicMobileSDK.framework/Headers/SNSMobileSDK.h</key>
-		<data>
-		HEaXQuQ01Dzz2nnLD/jLzgDtDuY=
-		</data>
-		<key>IdensicMobileSDK.framework/Headers/SNSSupportItem.h</key>
-		<data>
-		Xz1TzPRrDV/t7sX8RIMnfqT6BT8=
-		</data>
-		<key>IdensicMobileSDK.framework/Headers/SNSTheme.h</key>
-		<data>
-		teV4q+vrYReICqasSljLjiAgFIk=
-		</data>
-		<key>IdensicMobileSDK.framework/Headers/SNSThemeColors.h</key>
-		<data>
-		lein9uOoQCE5hhwdPm39ISxaBlA=
-		</data>
-		<key>IdensicMobileSDK.framework/Headers/SNSThemeFonts.h</key>
-		<data>
-		7E4+NJTlsKb1hfvSss8972hPt+Y=
-		</data>
-		<key>IdensicMobileSDK.framework/Headers/SNSThemeImages.h</key>
-		<data>
-		3OowTbfDR5axMQX6DaCGldX0tnU=
-		</data>
-		<key>IdensicMobileSDK.framework/Headers/SNSThemeMetrics.h</key>
-		<data>
-		eGnN7+EI9Oe2HBq0xZE02X76y5s=
-		</data>
-		<key>IdensicMobileSDK.framework/Headers/SNSThemeSection.h</key>
-		<data>
-		+9w26kIhOcTA01RUI1PWbXpCqyM=
-		</data>
-		<key>IdensicMobileSDK.framework/IdensicMobileSDK</key>
-		<data>
-		QxgflMDjh0QH+hNMOuTGzrxNdLg=
-		</data>
-		<key>IdensicMobileSDK.framework/Info.plist</key>
-		<data>
-		u9LBlOFhSbabwepcv6XveeErSSg=
-		</data>
-		<key>IdensicMobileSDK.framework/Modules/module.modulemap</key>
-		<data>
-		YZ0YB/IGFFzM1ix3rBvkuXJ4GJk=
 		</data>
 		<key>Images.xcassets/Contents.json</key>
 		<data>
@@ -1258,7 +1214,7 @@
 		</data>
 		<key>PayWiserOnboardingKYC.podspec</key>
 		<data>
-		e5Us6Sufhu51gQOGpP+CK16FYZI=
+		OIw471nBTZxim/5lEmzwAyxI4fQ=
 		</data>
 		<key>PersonalInfoViewController.storyboardc/Info.plist</key>
 		<data>
@@ -3359,6 +3315,34 @@
 			ZMRtq1cytawRG2nC3ZAK8Q3EQ7S9dSZALIrXkY2OzuY=
 			</data>
 		</dict>
+		<key>Frameworks/IdensicMobileSDK.framework/Assets.car</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			G2ZdN3z3MSZFdF0d31jBiyJb6LrH2WiAdBiovq+elhc=
+			</data>
+		</dict>
+		<key>Frameworks/IdensicMobileSDK.framework/IdensicMobileSDK</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			VtuOmNSCl2PIYyom7v1gxNS2r9q9K+x5JGreVcPdciY=
+			</data>
+		</dict>
+		<key>Frameworks/IdensicMobileSDK.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			S1uSyR5khmSyZ6zfguBt8akIEfRDtR0YuZVFRI3WLPY=
+			</data>
+		</dict>
+		<key>Frameworks/IdensicMobileSDK.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bGEUyjmZAHpsHqIt2J1S+xqymdr43LCEp9Ge1mEcM6c=
+			</data>
+		</dict>
 		<key>Headers/PayWiserOnboardingKYC-Swift.h</key>
 		<dict>
 			<key>hash2</key>
@@ -3371,111 +3355,6 @@
 			<key>hash2</key>
 			<data>
 			UHoXXQ3ZtqPvB3wTYeizxn6b4f1wcO6N2W5Z51yqjlM=
-			</data>
-		</dict>
-		<key>IdensicMobileSDK.framework/Assets.car</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			G2ZdN3z3MSZFdF0d31jBiyJb6LrH2WiAdBiovq+elhc=
-			</data>
-		</dict>
-		<key>IdensicMobileSDK.framework/Headers/IdensicMobileSDK.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			A6Rp1GRoEAfW5D9/ZALiBTeJEplh10H2mOf/uQDpCsY=
-			</data>
-		</dict>
-		<key>IdensicMobileSDK.framework/Headers/SNSActionResult.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			SFvX7q1LFD7m/xzrwY/TB2grLkOeEx4Q1Cxg65KJ3j8=
-			</data>
-		</dict>
-		<key>IdensicMobileSDK.framework/Headers/SNSEvent.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			lNZZsiVXr6cuxrTtoOgKSwOS0iCTcHLYXa8UMSsNv4I=
-			</data>
-		</dict>
-		<key>IdensicMobileSDK.framework/Headers/SNSMobileSDK.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			G2F1a3RB6qBeH+jgouNMOnM6zGU5xt5fo6mLbVqQ/jM=
-			</data>
-		</dict>
-		<key>IdensicMobileSDK.framework/Headers/SNSSupportItem.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Zilhjuy3Pkv5cHYC0jQbd/Yis+uuekiFEkDuFG8rlLo=
-			</data>
-		</dict>
-		<key>IdensicMobileSDK.framework/Headers/SNSTheme.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			x3klhHl8bnRj3iNAlx3kBjCTi23wgu1SXblcy/Hl+2k=
-			</data>
-		</dict>
-		<key>IdensicMobileSDK.framework/Headers/SNSThemeColors.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			GCw7aJD+gR8FTr39CWVTBfGVNcQZHIlu0JnZ7zf/ekA=
-			</data>
-		</dict>
-		<key>IdensicMobileSDK.framework/Headers/SNSThemeFonts.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			zrNPdD+KVu86KXWrsZAWacmL99cCctTKDHdIrW1arps=
-			</data>
-		</dict>
-		<key>IdensicMobileSDK.framework/Headers/SNSThemeImages.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			RD5dI14PbeIKP+JBbPd9qiLatlBk7IFQhXXta7dOr0U=
-			</data>
-		</dict>
-		<key>IdensicMobileSDK.framework/Headers/SNSThemeMetrics.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			a272SOqAX/5hYEBIhr3mP2wlbGVGvRQEC6WdB1v0ZKI=
-			</data>
-		</dict>
-		<key>IdensicMobileSDK.framework/Headers/SNSThemeSection.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			mIhk+Fk+BiDP358Kvf/vAu15TLMUWi2772MXVUGtRgE=
-			</data>
-		</dict>
-		<key>IdensicMobileSDK.framework/IdensicMobileSDK</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			mthLKegKMwPZTykf0n9J7ddNRnSxIlPkYbGDPi7tKKA=
-			</data>
-		</dict>
-		<key>IdensicMobileSDK.framework/Info.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			S1uSyR5khmSyZ6zfguBt8akIEfRDtR0YuZVFRI3WLPY=
-			</data>
-		</dict>
-		<key>IdensicMobileSDK.framework/Modules/module.modulemap</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			CRHsFr0O0yZqwGQUFfg/dOm6s2GlLlW7bR5XYX03j2U=
 			</data>
 		</dict>
 		<key>Images.xcassets/Contents.json</key>
@@ -3587,7 +3466,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ovZd5CvL3iOd+o6bI0u0lA0it0Ac+m7O2dTkrpWM2DM=
+			We5tcXh3ifWwIoiPqHMnOfC99e6asuXiVlCwbX9nrv0=
 			</data>
 		</dict>
 		<key>PersonalInfoViewController.storyboardc/Info.plist</key>

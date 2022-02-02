@@ -15,13 +15,13 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '12.0'
 
   s.resource_bundles = {
-     'PayWiserOnboardingKYC' => 'PayWiserOnboardingKYC.framework/*.{storyboardc,nib,lproj,bundle,json,xml,xcframework}'
+     'PayWiserOnboardingKYC' => 'PayWiserOnboardingKYC.framework/*.{storyboardc,nib,lproj,bundle,json,xml}'
   }
 
   s.source_files = "PayWiserOnboardingKYC.framework/Headers/*.h"
   s.public_header_files = "PayWiserOnboardingKYC.framework/Headers/*.h"
   s.module_map = "PayWiserOnboardingKYC.framework/Modules/module.modulemap"
-  s.vendored_frameworks = "PayWiserOnboardingKYC.framework"
+  s.vendored_frameworks = "PayWiserOnboardingKYC.framework", "IdensicMobileSDK.framework"
 
   
   s.frameworks = 'UIKit'
