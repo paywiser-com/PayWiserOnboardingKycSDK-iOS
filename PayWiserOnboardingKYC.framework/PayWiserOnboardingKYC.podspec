@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '12.0'
 
   s.resource_bundles = {
-     'PayWiserOnboardingKYC' => 'PayWiserOnboardingKYC.framework/*.{storyboardc,nib,lproj,bundle,json,xml}'
+     'PayWiserOnboardingKYC' => 'PayWiserOnboardingKYC.framework/*.{storyboardc,nib,lproj,bundle,json,xml,xcframework}'
   }
 
   s.source_files = "PayWiserOnboardingKYC.framework/Headers/*.h"
@@ -26,8 +26,6 @@ Pod::Spec.new do |s|
   
   s.frameworks = 'UIKit'
   s.dependency 'VideoID', '7.1.21'
-  
-  s.xcconfig = { 'LIBRARY_SEARCH_PATHS' => '$(PODS_ROOT)/ProjectFolder/LibraryFolder' }
   
   s.pod_target_xcconfig = {
       'ENABLE_BITCODE' => 'No',
