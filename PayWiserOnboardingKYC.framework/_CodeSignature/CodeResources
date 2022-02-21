@@ -1130,7 +1130,7 @@
 		</data>
 		<key>Frameworks/IdensicMobileSDK.framework/IdensicMobileSDK</key>
 		<data>
-		hxa3CW7z/IrcJ+g++QJ7ZJGVsHs=
+		Az1X/kcMXMbiuEVZ1OJuWhmTgCE=
 		</data>
 		<key>Frameworks/IdensicMobileSDK.framework/Info.plist</key>
 		<data>
@@ -1178,11 +1178,11 @@
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		DkPoMG9MZa7QkXpQR5/XQo9aYBk=
+		HzcovejkzjkHGrDhoUYebu8D3C4=
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<data>
-		DkPoMG9MZa7QkXpQR5/XQo9aYBk=
+		HzcovejkzjkHGrDhoUYebu8D3C4=
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -1194,7 +1194,7 @@
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		oEmdtS33mYAAS5oMlmCO2gxXK+8=
+		g/pT1i50g83tNht0OC+CSzaygYQ=
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -1206,7 +1206,7 @@
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		oEmdtS33mYAAS5oMlmCO2gxXK+8=
+		g/pT1i50g83tNht0OC+CSzaygYQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -3322,7 +3322,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZiqPA82i+yd7FcgZ86fjdS/gET64zZ8k42z+Binm3k0=
+			+PGqHAA/gSk9upcnq7+YIFF4GS91CTJghXsCvMOIEJM=
 			</data>
 		</dict>
 		<key>Frameworks/IdensicMobileSDK.framework/Info.plist</key>
@@ -3399,14 +3399,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			NhnpOuwkcvSBgP1cmx9NBBZYfKoozg4AWb0zCN57+zw=
+			OQqX8n6JIznHqlypTs4X3fzmKKCef6/OtIsAQxM9P6E=
 			</data>
 		</dict>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			NhnpOuwkcvSBgP1cmx9NBBZYfKoozg4AWb0zCN57+zw=
+			OQqX8n6JIznHqlypTs4X3fzmKKCef6/OtIsAQxM9P6E=
 			</data>
 		</dict>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -3427,7 +3427,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8wUipcDXCHmXLPiBMx5/0QFmpeM11bFsw6vHW+TwLZc=
+			2sjq3WnoZGInNBs8t77c6Ijn+0iaFu4uYNNrNccST4U=
 			</data>
 		</dict>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64.swiftdoc</key>
@@ -3448,7 +3448,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8wUipcDXCHmXLPiBMx5/0QFmpeM11bFsw6vHW+TwLZc=
+			2sjq3WnoZGInNBs8t77c6Ijn+0iaFu4uYNNrNccST4U=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
