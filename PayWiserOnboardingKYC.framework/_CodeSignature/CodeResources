@@ -1124,6 +1124,22 @@
 		<data>
 		iT3aztgE5AHkhzu2gA9Y4hghdQY=
 		</data>
+		<key>Frameworks/IdensicMobileSDK.framework/Assets.car</key>
+		<data>
+		Fp10PBGTozp+LJGrrgJS+C7EgFI=
+		</data>
+		<key>Frameworks/IdensicMobileSDK.framework/IdensicMobileSDK</key>
+		<data>
+		F445drlVPLrRHLd2RUvYkhMD/tI=
+		</data>
+		<key>Frameworks/IdensicMobileSDK.framework/Info.plist</key>
+		<data>
+		u9LBlOFhSbabwepcv6XveeErSSg=
+		</data>
+		<key>Frameworks/IdensicMobileSDK.framework/_CodeSignature/CodeResources</key>
+		<data>
+		SH6/pHiypiav+uJbgkYAreDh1v0=
+		</data>
 		<key>Headers/PayWiserOnboardingKYC-Swift.h</key>
 		<data>
 		V62lB6uc9yg67Tu6ywj9GDywfoY=
@@ -1198,7 +1214,7 @@
 		</data>
 		<key>PayWiserOnboardingKYC.podspec</key>
 		<data>
-		m964/Qz3wb141HfZL193Vl+0qLM=
+		uejqmnBR5aKJhDuhoGHBf3aT+XM=
 		</data>
 		<key>PersonalInfoViewController.storyboardc/Info.plist</key>
 		<data>
@@ -3295,6 +3311,34 @@
 			ZMRtq1cytawRG2nC3ZAK8Q3EQ7S9dSZALIrXkY2OzuY=
 			</data>
 		</dict>
+		<key>Frameworks/IdensicMobileSDK.framework/Assets.car</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			G2ZdN3z3MSZFdF0d31jBiyJb6LrH2WiAdBiovq+elhc=
+			</data>
+		</dict>
+		<key>Frameworks/IdensicMobileSDK.framework/IdensicMobileSDK</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			3SBH4bOlsa8l5ANueo86CjtXxMpnicovY6Rvx1m/Cxg=
+			</data>
+		</dict>
+		<key>Frameworks/IdensicMobileSDK.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			S1uSyR5khmSyZ6zfguBt8akIEfRDtR0YuZVFRI3WLPY=
+			</data>
+		</dict>
+		<key>Frameworks/IdensicMobileSDK.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bGEUyjmZAHpsHqIt2J1S+xqymdr43LCEp9Ge1mEcM6c=
+			</data>
+		</dict>
 		<key>Headers/PayWiserOnboardingKYC-Swift.h</key>
 		<dict>
 			<key>hash2</key>
@@ -3418,7 +3462,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			m8mStkN0F/tCHy1/ZmfQG4K64khandj7Ccg9n07Velw=
+			ft46ELPa7X1eBFQB04l2k1ArrOClrA0SVbeOqeA4/48=
 			</data>
 		</dict>
 		<key>PersonalInfoViewController.storyboardc/Info.plist</key>
