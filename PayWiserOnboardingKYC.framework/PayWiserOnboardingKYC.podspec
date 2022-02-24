@@ -21,8 +21,8 @@ Pod::Spec.new do |s|
   s.source_files = 'PayWiserOnboardingKYC.framework/Headers/*.h'
   s.public_header_files = 'PayWiserOnboardingKYC.framework/Headers/*.h'
   s.module_map = 'PayWiserOnboardingKYC.framework/Modules/module.modulemap'
-  s.vendored_frameworks = 'PayWiserOnboardingKYC.framework', 'IdensicMobileSDK.framework'
-  s.preserve_path = 'PayWiserOnboardingKYC.framework/Frameworks/*'
+  s.vendored_frameworks = 'PayWiserOnboardingKYC.framework', 'PayWiserOnboardingKYC.framework/Frameworks/IdensicMobileSDK.framework'
+  
 
   
   s.frameworks = 'UIKit'
