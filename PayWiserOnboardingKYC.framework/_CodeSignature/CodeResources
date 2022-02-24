@@ -1130,7 +1130,7 @@
 		</data>
 		<key>Frameworks/IdensicMobileSDK.framework/IdensicMobileSDK</key>
 		<data>
-		ZbelSlgbf/gx5aX3q/PvwpPPzG4=
+		rfItQTvrRaUKEIUzdbkXJqCCegg=
 		</data>
 		<key>Frameworks/IdensicMobileSDK.framework/Info.plist</key>
 		<data>
@@ -1194,7 +1194,7 @@
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		djJUXJX4gfEmRuoadv530ApFQLQ=
+		u517wD9PrHABoZASsP8z3caes0Y=
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -1206,7 +1206,7 @@
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		djJUXJX4gfEmRuoadv530ApFQLQ=
+		u517wD9PrHABoZASsP8z3caes0Y=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -3322,7 +3322,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			1Xd+Hcp0zqYnUIe17pcHEuZEyFvCSMZGpA1Efiek/3I=
+			swVDKpFN8mM8EHgtLy9/Q9sU3JttIQin7xOzVdqFppU=
 			</data>
 		</dict>
 		<key>Frameworks/IdensicMobileSDK.framework/Info.plist</key>
@@ -3427,7 +3427,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			q4bg/PeYn5CgDfPfz9fowCqqJYNNNnTZx0Dot5EFA3w=
+			PP9e8jq1wfIjhxA/kGe3TQF2YHMJzoAzS2DZ9VtVC9M=
 			</data>
 		</dict>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64.swiftdoc</key>
@@ -3448,7 +3448,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			q4bg/PeYn5CgDfPfz9fowCqqJYNNNnTZx0Dot5EFA3w=
+			PP9e8jq1wfIjhxA/kGe3TQF2YHMJzoAzS2DZ9VtVC9M=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
