@@ -16,8 +16,4 @@ FOUNDATION_EXPORT const unsigned char PayWiserOnboardingKYCVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <PayWiserOnboardingKYC/PublicHeader.h>
 
-#import <IdensicMobileSDK/SNSMobileSDK.h>
-#import <IdensicMobileSDK/SNSSupportItem.h>
-#import <IdensicMobileSDK/SNSActionResult.h>
-#import <IdensicMobileSDK/SNSEvent.h>
-#import <IdensicMobileSDK/SNSTheme.h>
+
