@@ -1124,6 +1124,34 @@
 		<data>
 		iT3aztgE5AHkhzu2gA9Y4hghdQY=
 		</data>
+		<key>Frameworks/Pods_PayWiserOnboardingKYC.framework/Info.plist</key>
+		<data>
+		LHewMbLDHwa3N1nITnp+RR5PSlQ=
+		</data>
+		<key>Frameworks/Pods_PayWiserOnboardingKYC.framework/Pods_PayWiserOnboardingKYC</key>
+		<data>
+		bMAgrp5dA+rwfT7VpoyTwpTQc4M=
+		</data>
+		<key>Frameworks/Pods_PayWiserOnboardingKYC.framework/_CodeSignature/CodeDirectory</key>
+		<data>
+		YzgSFi+CRVVZhR4MTv/+kJIHscs=
+		</data>
+		<key>Frameworks/Pods_PayWiserOnboardingKYC.framework/_CodeSignature/CodeRequirements</key>
+		<data>
+		xy5p2QH65/nmIx9HMc+VFKjT8d8=
+		</data>
+		<key>Frameworks/Pods_PayWiserOnboardingKYC.framework/_CodeSignature/CodeRequirements-1</key>
+		<data>
+		MsIkrMFICcjsRU5nJpEQIHoQmGc=
+		</data>
+		<key>Frameworks/Pods_PayWiserOnboardingKYC.framework/_CodeSignature/CodeResources</key>
+		<data>
+		CHI5YfYaaOxXIP6WAGxOX6UkWZg=
+		</data>
+		<key>Frameworks/Pods_PayWiserOnboardingKYC.framework/_CodeSignature/CodeSignature</key>
+		<data>
+		2BZm0jA4LV1e35C4ne5uGY/Dmbg=
+		</data>
 		<key>Headers/PayWiserOnboardingKYC-Swift.h</key>
 		<data>
 		V62lB6uc9yg67Tu6ywj9GDywfoY=
@@ -1178,7 +1206,7 @@
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		zKTkquIl3O+oFyZGtXwIGo+3Y7Y=
+		feRRA5Xr7958zD7Vnf/PItViQgY=
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -1190,7 +1218,7 @@
 		</data>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		zKTkquIl3O+oFyZGtXwIGo+3Y7Y=
+		feRRA5Xr7958zD7Vnf/PItViQgY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -1198,7 +1226,7 @@
 		</data>
 		<key>PayWiserOnboardingKYC.podspec</key>
 		<data>
-		Mi/uHYk7qsPWquVqgH6IiK0KGhE=
+		MJOx494ovBJlsVvxNA8Sj8NreCE=
 		</data>
 		<key>PersonalInfoViewController.storyboardc/Info.plist</key>
 		<data>
@@ -3295,6 +3323,55 @@
 			ZMRtq1cytawRG2nC3ZAK8Q3EQ7S9dSZALIrXkY2OzuY=
 			</data>
 		</dict>
+		<key>Frameworks/Pods_PayWiserOnboardingKYC.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/kX1f4rPTMfF0cdAjbPf2QW16BOxo+ZSxOL7DY83B6Y=
+			</data>
+		</dict>
+		<key>Frameworks/Pods_PayWiserOnboardingKYC.framework/Pods_PayWiserOnboardingKYC</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			tma/zb3aT/E3kfovWcFGbovUD6emDbF9KqpyupGxfwo=
+			</data>
+		</dict>
+		<key>Frameworks/Pods_PayWiserOnboardingKYC.framework/_CodeSignature/CodeDirectory</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			KdMlJIX6F/d+KJAGjHzMk4gJ7K6JE6VWF5ISoX+hNkA=
+			</data>
+		</dict>
+		<key>Frameworks/Pods_PayWiserOnboardingKYC.framework/_CodeSignature/CodeRequirements</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Vi1HW4ZxwyRrcBiiscEV8kIz8Y/iu1wP51IJvoLhgz4=
+			</data>
+		</dict>
+		<key>Frameworks/Pods_PayWiserOnboardingKYC.framework/_CodeSignature/CodeRequirements-1</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			sHI9yho9YgfKaEBp9kcEYdEQWEOJk5ID/E/qfP1q/x8=
+			</data>
+		</dict>
+		<key>Frameworks/Pods_PayWiserOnboardingKYC.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			JRIopGI8Y4B2Y6LlE8xeIZfKLSL/wxLqhYjSwhqNjAE=
+			</data>
+		</dict>
+		<key>Frameworks/Pods_PayWiserOnboardingKYC.framework/_CodeSignature/CodeSignature</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			vTNMkgAOUMLLFV3Rdc9gCBzlGyxwz05QHlpHIlNyuMQ=
+			</data>
+		</dict>
 		<key>Headers/PayWiserOnboardingKYC-Swift.h</key>
 		<dict>
 			<key>hash2</key>
@@ -3383,7 +3460,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pMmpE4UKPM8Hko6iHQywD8WundmsywSs+PoSyVlQxWA=
+			Bk3v6yS6/d8xtO+E1V+VvvKQK966xpp3z+LetJhUwZE=
 			</data>
 		</dict>
 		<key>Modules/PayWiserOnboardingKYC.swiftmodule/arm64.swiftdoc</key>
@@ -3404,7 +3481,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pMmpE4UKPM8Hko6iHQywD8WundmsywSs+PoSyVlQxWA=
+			Bk3v6yS6/d8xtO+E1V+VvvKQK966xpp3z+LetJhUwZE=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -3418,7 +3495,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			YbQD9zr03ZWCJSGsxT/5nkwcn1qqbAIAeht+8ZIMs4I=
+			1rEiyRPj4Qu/HsuP2gsaqqkDYBOZP1+B59nk9brWpEc=
 			</data>
 		</dict>
 		<key>PersonalInfoViewController.storyboardc/Info.plist</key>
